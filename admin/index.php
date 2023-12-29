@@ -62,10 +62,10 @@
                 </li>
 
                 <li>
-                    <!-- <a href="http://"> -->
+                    <a href="database/logout.php">
                         <span class="material-symbols-outlined">logout</span>
                         <span class="title">Log out</span>
-                    <!-- </a> -->
+                    </a>
                 </li>
 
                 

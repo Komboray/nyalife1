@@ -10,7 +10,7 @@ $db_name = 'nyalife';
 $conn = mysqli_connect($server, $user, $pass, $db_name);
 
 if ($conn){
-    echo "You are connected successfuly!";
+    // echo "You are connected successfuly!";
 }
 else{
     echo "Failed, an error occured";

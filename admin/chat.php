@@ -67,10 +67,10 @@ include("database/connect.php");
                 </li>
 
                 <li>
-                    <!-- <a href="http://"> -->
+                    <a href="database/logout.php">
                         <span class="material-symbols-outlined">logout</span>
                         <span class="title">Log out</span>
-                    <!-- </a> -->
+                    </a>
                 </li>
 
                 
@@ -114,6 +114,52 @@ include("database/connect.php");
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
         <div>
+            <!-- TESTIMONIALS -->
+
+        <section class="testimonials">
+            
+            
+            <?php
+            include('database/connect.php');
+
+            $sql = "SELECT * 
+                    FROM `group_messo`";
+
+            $response = mysqli_query($conn, $sql);
+
+            if($response){
+                $num = mysqli_num_rows($response);
+
+                if($num > 0){
+                    while($row = mysqli_fetch_assoc($response)){
+                        // echo $row["name"] . "<br>";
+                        // echo $row["email"] . "<br>";
+                        // echo $row["comment"] . "<br>";
+                        echo"
+                            <div class='row'>
+                            <div class='testimonial-col'>
+                            
+                            <div>
+                            <p>
+                            {$row['message']}
+                            </p>
+                        // <h3> {$row['name']}</h3>
+                        </div>
+
+                        </div>
+
+                        
+                        </div>";
+                    }
+                }else{
+                    echo "<h1>You Do not have any messages</h1>";
+                }
+            }
+
+            
+            ?>
+
+        </section>
 
         
             
@@ -133,10 +179,9 @@ include("database/connect.php");
                                 </div>
                             
                                       <div class='comment-box'>
-                                        <h3>Leave a comment</h3>
-                                        <form action='comment.php' class='comment-form' method = 'POST'>
-                                            <input type='text' placeholder='Enter your Name' name='name' id='name'>
-                                            <input type='email' placeholder='Enter your Email' name='email' id='email' required>
+                                        <h3>Start a chat</h3>
+                                        <form action='single_mess.php' class='comment-form' method = 'POST'>
+                                            
                                             <textarea name='comment' id='comment' rows='5' placeholder='Your comment' required></textarea>
                                             <button type='submit' class='hero-btn red-btn'>POST COMMENT</button>
                                         </form>         
@@ -154,10 +199,9 @@ include("database/connect.php");
                                 </div>
                             
                                       <div class='comment-box'>
-                                        <h3>Leave a comment</h3>
-                                        <form action='comment.php' class='comment-form' method = 'POST'>
-                                            <input type='text' placeholder='Enter your Name' name='name' id='name'>
-                                            <input type='email' placeholder='Enter your Email' name='email' id='email' required>
+                                        <h3>Start a chat</h3>
+                                        <form action='group_mess.php' class='comment-form' method = 'POST'>
+                                            
                                             <textarea name='comment' id='comment' rows='5' placeholder='Your comment' required></textarea>
                                             <button type='submit' class='hero-btn red-btn'>POST COMMENT</button>
                                         </form>         
@@ -239,7 +283,7 @@ include("database/connect.php");
     <h1>What our Business owners say</h1>
     <p>There is no better place than where we are right now, we wouldnt change it for the world</p>
 
-    <!-- <?php
+    <?php
 
     include("connect.php");
 
@@ -278,4 +322,4 @@ include("database/connect.php");
     
     ?> -->
 
-</section> -->
+</section>

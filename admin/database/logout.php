@@ -1,13 +1,13 @@
 <?php
-session_start();
+// session_start();
 
 
-echo $_SESSION["username"] . "<br>";
-// echo $_SESSION["password"] . "<br>";
+// echo $_SESSION["username"] . "<br>";
+// // echo $_SESSION["password"] . "<br>";
 
-if(isset($_POST["logout"])){
-    session_destroy();
-    header("Location: index.php");
-}
+// if(isset($_POST["logout"])){
+//     session_destroy();
+//     header("Location: index.php");
+// }
 
 ?>
