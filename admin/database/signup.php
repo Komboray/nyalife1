@@ -1,44 +1,53 @@
 <?php
 include("connect.php");
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $username = filter_input(INPUT_POST, "name" , FILTER_SANITIZE_SPECIAL_CHARS);
-    $email = filter_input(INPUT_POST, "email" , FILTER_SANITIZE_SPECIAL_CHARS);
-    $password = filter_input(INPUT_POST, "pass" , FILTER_SANITIZE_SPECIAL_CHARS);
-
-    $sql = "SELECT * 
-            FROM users
-            WHERE `email` = '$email'";
-
-    $response = mysqli_query($conn, $sql);
-
-    if($response){
-        $num = mysqli_num_rows($response);
-        if($num > 0){
-            echo "User already exists";
-        }else{
-
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql1 = "INSERT INTO `users` (username, email, pass) 
-                 VALUES ('$username', '$email', '$hash')";
-
-            $result = mysqli_query($conn, $sql1);
-
-        if($result){
-            $_SESSION["username"] = $_POST["username"];
-            $_SESSION["email"] = $_POST["email"];
-
-            header("Location:radio.php");
-
-        }else{
-            die(mysqli_error($conn));
+//we need to start a session
+session_start();
+//we need to check whether the fields are not empty
+if(!empty($_POST["name"]) &&
+   !empty($_POST["email"]) &&
+   !empty($_POST["pass"])){
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $username = filter_input(INPUT_POST, "name" , FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_input(INPUT_POST, "email" , FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = filter_input(INPUT_POST, "pass" , FILTER_SANITIZE_SPECIAL_CHARS);
+    
+        $sql = "SELECT * 
+                FROM `users`
+                WHERE `email` = '$email'";
+    
+        $response = mysqli_query($conn, $sql);
+    
+        if($response){
+            $num = mysqli_num_rows($response);
+            if($num > 0){
+                echo "User already exists";
+            }else{
+    
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+                $sql1 = "INSERT INTO `users` (name, email, pass) 
+                     VALUES ('$username', '$email', '$hash')";
+    
+                $result = mysqli_query($conn, $sql1);
+    
+            if($result){
+                $_SESSION["username"] = $_POST["name"];
+                $_SESSION["email"] = $_POST["email"];
+    
+                header("Location:radio.php");
+    
+            }else{
+                die(mysqli_error($conn));
+            }
+            }
+            
         }
-        }
+            
         
     }
-        
-    
-}
+
+
+   }
 
 ?>
 <!DOCTYPE html>
@@ -74,10 +83,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 </div>
                 <div class="btn-field">
-                    <button type="submit"  id="signupBtn" >Sign up</button>
+                    <button type="submit" name = "submit" id="signupBtn" >Sign up</button>
    
-                   
-                    <button type="submit" id="signinBtn" class="disable"><a href="login.php" style = "text-decoration:none; color:red;">Sign in</a></button>
+                    <button type="button" id="signinBtn" class="disable"><a href="login.php" style = "text-decoration:none; color:red;">Sign in</a></button>
 
                 </div>
             </form>

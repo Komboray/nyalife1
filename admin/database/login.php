@@ -36,9 +36,9 @@ include('connect.php');
                 </div>
                 <div class="btn-field">
                     
-                    <button type="submit"  id="signupBtn"><a href="signup.php" style = "text-decoration:none; color:red;">Sign up</a></button>
+                    <button type="button"  id="signupBtn" class="disable"><a href="signup.php" style = "text-decoration:none; color:red;">Sign up</a></button>
                     <!-- <button type="submit" id="signinBtn" class="disable"><a href="signup.php"></a> Sign up</button> -->
-                    <button type="submit" id="signinBtn" >Sign in</button>
+                    <button type="submit" name = "submit" id="signinBtn" >Sign in</button>
 
 
                 </div>

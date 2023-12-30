@@ -99,17 +99,41 @@
         <div class="cardBox">
             <div class="card">
                 <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
+                    <div class="numbers">11</div>
+                    <div class="cardName">Appointments</div>
                 </div>
 
                 <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
+                    <span class="material-symbols-outlined">book_online</span>
                 
                 </div>
             </div>
 
             <div class="card">
+                <div>
+                    <div class="numbers">15</div>
+                    <div class="cardName">Patient Profiles</div>
+                </div>
+
+                <div class="iconBx">
+                    <span class="material-symbols-outlined">groups</span>
+                
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">15401</div>
+                    <div class="cardName">Telemedicine</div>
+                </div>
+
+                <div class="iconBx">
+                    <span class="material-symbols-outlined">wifi_calling</span>
+                
+                </div>
+            </div>
+
+            <!-- <div class="card">
                 <div>
                     <div class="numbers">15401</div>
                     <div class="cardName">Daily News</div>
@@ -119,31 +143,7 @@
                     <span class="material-symbols-outlined">menu</span>
                 
                 </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
-
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
-
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
+            </div> -->
 
         </div>
 
@@ -201,7 +201,7 @@
             <!-- NEW CUSTOMERS -->
             <div class="recentCustomers">
                 <div class="cardHeader">
-                    <h2>Recent Customers</h2>
+                    <h2>Recent Patients</h2>
                 </div>
 
                 <table>

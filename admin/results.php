@@ -152,7 +152,7 @@
 
             <div class="recentOrders">
                 <div class="cardHeader">
-                    <h2>Recent Orders</h2>
+                    <h2>Recent Results</h2>
                     <button type="button" class="btn"><a href="http://" style="text-decoration: none;">View all</a></button>
                 </div>
     
@@ -201,7 +201,7 @@
             <!-- NEW CUSTOMERS -->
             <div class="recentCustomers">
                 <div class="cardHeader">
-                    <h2>Recent Customers</h2>
+                    <h2>Recent Medicines</h2>
                 </div>
 
                 <table>

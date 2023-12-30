@@ -99,8 +99,8 @@
         <div class="cardBox">
             <div class="card">
                 <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
+                    <div class="numbers">1</div>
+                    <div class="cardName">Recent appointments</div>
                 </div>
 
                 <div class="iconBx">
@@ -111,8 +111,8 @@
 
             <div class="card">
                 <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
+                    <div class="numbers">11</div>
+                    <div class="cardName">Cancelled appointments</div>
                 </div>
 
                 <div class="iconBx">
@@ -123,8 +123,8 @@
 
             <div class="card">
                 <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
+                    <div class="numbers">11</div>
+                    <div class="cardName">Chat</div>
                 </div>
 
                 <div class="iconBx">
@@ -132,18 +132,7 @@
                 
                 </div>
             </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
-
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
+              
 
         </div>
 
@@ -152,7 +141,7 @@
 
             <div class="recentOrders">
                 <div class="cardHeader">
-                    <h2>Recent Orders</h2>
+                    <h2>Patients</h2>
                     <button type="button" class="btn"><a href="http://" style="text-decoration: none;">View all</a></button>
                 </div>
     
@@ -201,7 +190,7 @@
             <!-- NEW CUSTOMERS -->
             <div class="recentCustomers">
                 <div class="cardHeader">
-                    <h2>Recent Customers</h2>
+                    <h2>Recent Medicines</h2>
                 </div>
 
                 <table>
