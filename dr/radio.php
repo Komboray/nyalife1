@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     echo "Details sent successfully!";
                     //sleep for 6 seconds b4 diverting to the next page
                     // sleep(6);
-                    header("Location:nurse/nurse.php");
+                    header("Location:n-index.php");
                 }
                 break;
             case "Pharmacist":
@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                     //sleep for 6 seconds b4 diverting to the next page
                     // sleep(6);
-                    header("Location:index.php");
+                    header("Location:p-index.php");
                 }
                 break;
             case "Lab Tech":
@@ -80,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                     //sleep for 6 seconds b4 diverting to the next page
                     // sleep(6);
-                    header("Location:index.php");
+                    header("Location:l-index.php");
                 }
                 break;
             case "Receptionist":
@@ -97,7 +97,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                     //sleep for 6 seconds b4 diverting to the next page
                     // sleep(6);
-                    header("Location:index.php");
+                    header("Location:r-index.php");
                 }
                 break;
             case "Accountant":
