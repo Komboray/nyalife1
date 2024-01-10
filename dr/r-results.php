@@ -32,30 +32,25 @@
                 </li>
 
                 <li>
-                    <a href="index.php">
+                    <a href="r-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="appointments.php">
-                        <span class="material-symbols-outlined">bookmark</span>
-                        <span class="title">Medicine</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="results.php">
-                        <span class="material-symbols-outlined">glucose</span>
-                        <span class="title">Results</span>
+                    <a href="r-handle-patient.php">
+                        <span class="material-symbols-outlined">recent_patient</span>
+                        <span class="title">Handle Patient</span>
                     </a>
                 </li>
 
                 
 
+                
+
                 <li>
-                    <a href="chat.php">
+                    <a href="r-chat.php">
                         <span class="material-symbols-outlined">forum</span>
                         <span class="title">Chat</span>
                     </a>

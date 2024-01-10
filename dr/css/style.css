@@ -541,3 +541,53 @@ body{
         margin-right: 15px;
     }
 }
+
+
+/* design of the button with a link */
+.hero-btn-bal{
+    display: inline;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: #f44336;
+    position: relative;
+    cursor: pointer;
+}
+ /* hover effecr of the button */
+.hero-btn-bal:hover{
+    border: 1px solid #8665f7;
+    background: #8665f7;
+    transition: 1s;
+ }
+
+ .hero-btn{
+   display: inline;
+   text-decoration: none;
+   color: #fff;
+   border: 1px solid #fff;
+   padding: 12px 34px;
+   font-size: 13px;
+   background: #f44336;
+   position: relative;
+   cursor: pointer;
+}
+/* hover effecr of the button */
+.hero-btn:hover{
+   border: 1px solid #8665f7;
+   background: transparent;
+   transition: 1s;
+}
+nav .fa{
+    display: none;
+}
+.buttons{
+    align-items: center;
+ }
+
+
+
+                                      /* THIS IS THE CSS FOR THE TABLE */
+
+

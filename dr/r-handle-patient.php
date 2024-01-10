@@ -5,9 +5,41 @@ include("database/connect.php");
 //we need to send the details to the database table ffor patients
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS):
-    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS):
+    if(isset($_POST["submit"])){
+        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
 
+        $rooms = $_POST["rooms"];
+        
+            echo $rooms;
+        
+            
+
+        $sql = "INSERT INTO `patients` (name,email,stage) 
+                VALUES ('$username', '$email' , '$rooms')";
+
+        try{
+            $response = mysqli_query($conn, $sql);
+        if($response){
+
+            echo "Details have been sent to the database!";
+            
+        }else{
+            mysqli_close($conn);
+            exit();
+        }
+        }catch(mysqli_sql_exception $e){
+            if ($e->getCode() == 1062) { // 1062 is the MySQL error code for duplicate entry
+                // Handle duplicate entry error
+                echo "The name 'peter drury' already exists.";
+            } else {
+                // Handle other database errors
+                echo "Database error: " . $e->getMessage();
+            }
+        }
+    }
+
+    
 
 }
 
@@ -51,15 +83,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                     <div class="input-control">
                         <label for="email">Email:</label>
-                        <input id="email" name="email" type="text" required>
+                        <input id="email" name="email" type="email" required>
                         
                     </div>
-                    <!-- <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
                     <br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <br> -->
+
+                    <!-- this is the drop down box -->
+                    <label for="selectOption">Send the patient to a specific stage:</label>
+                    <input type="text" id="selectOption" list="optionsList">
+                    
+                    <!-- Dropdown options list -->
+                    <datalist id="optionsList">
+                        <option value="Triage" name ="rooms">
+                        <option value="Dr office" name ="rooms">
+                        <option value="Lab" name ="rooms">
+                        <!-- Add more options as needed -->
+                    </datalist>
+                    <br>
+
+                    <!-- Optional: Display the selected option -->
+                    <p id="selectedOption"></p>
+
+
+
                     
                     <button type="submit">Send to Triage</button>
                 </form>
@@ -78,37 +124,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </li>
 
                 <li>
-                    <a href="index.php">
+                    <a href="r-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="title">Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="index.php">
-                        <span class="material-symbols-outlined">recent_patient</span>
-                        <span class="title">Handle Patient</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="appointments.php">
-                        <span class="material-symbols-outlined">bookmark</span>
-                        <span class="title">Medicine</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="results.php">
-                        <span class="material-symbols-outlined">glucose</span>
-                        <span class="title">Results</span>
                     </a>
                 </li>
 
                 
 
                 <li>
-                    <a href="chat.php">
+                    <a href="r-index.php">
+                        <span class="material-symbols-outlined">recent_patient</span>
+                        <span class="title">Handle Patient</span>
+                    </a>
+                </li>
+
+                
+
+                
+
+                
+
+                <li>
+                    <a href="r-chat.php">
                         <span class="material-symbols-outlined">forum</span>
                         <span class="title">Chat</span>
                     </a>
@@ -156,7 +194,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="card" id="showPopupBtn">
                 <div>
                     
-                    <div class="cardName"><button type="button" class="btn" id="showPopupBtn" style = "color:red; ">Click to add a patient to the queue</button></div>
+                    <div class="cardName"><button type="button" class='hero-btn red-btn' id="showPopupBtn" style = "color:yellow; ">Click to add a patient to the queue</button></div>
                 </div>
 
                 <div class="iconBx">
@@ -188,51 +226,52 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="details">
 
             <div class="recentOrders">
+
                 <div class="cardHeader">
                     <h2>Today's Patients</h2>
-                    <button type="button" class="btn"><a href="http://" style="text-decoration: none;">View all</a></button>
+                    <!-- <button type="button" class="btn"><a href="http://" style="text-decoration: none;">View all</a></button> -->
                 </div>
     
                 <table>
                     <thead>
                         <tr>
                             <td>Name</td>
-                            <td>Price</td>
-                            <td>Payment</td>
+                            <td>Stage</td>
+                            <td>Visit</td>
                             <td>Status</td>
                         </tr>
                     </thead>
         
                     <tbody>
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status delivered">delivered</span></td>
-                        </tr>
-        
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-        
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status return">Return</span></td>
-                        </tr>
+                        <?php
+                        $sql = "SELECT *
+                                FROM `patients`";
 
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status inProgress">In progress</span></td>
-                        </tr>
+                        $result = mysqli_query($conn, $sql);
+                        if($result){
+                            $num = mysqli_num_rows($result);
+
+                            if($num>0){
+                                while($row = mysqli_fetch_assoc($result)){
+
+                                    echo "
+                                    <tr>
+                                        <td>{$row["name"]}</td>
+                                        <td>{$row["stage"]}</td>
+                                        <td>{$row["visit"]}</td>
+                                        <td><span class='status delivered'>delivered</span></td>
+                                    </tr>
+                                    ";
+                                }
+                            }
+                        }
+                        
+
+                        ?>
+                
                     </tbody>
                 </table>
+
             </div>
 
             <!-- NEW CUSTOMERS -->
@@ -240,48 +279,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="cardHeader">
                     <h2>Recent Patients</h2>
                 </div>
+                  <?php
 
-                <table>
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="" alt="" srcset=""></div>
-                        </td>
+                    $sql = "SELECT *
+                            FROM `patients`";
+                    $res = mysqli_query($conn, $sql);
 
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
+                    if($res){
 
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="" alt="" srcset=""></div>
-                        </td>
+                        $num = mysqli_num_rows($res);
 
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
+                        if($num > 0){
+                            while($row = mysqli_fetch_assoc($res)){
+                                echo "
+                                <table>
+                                <tr>                
+            
+                                    <td>
+                                        <h4>{$row["name"]} <br> <span>{$row["email"]}</span></h4>
+                                    </td>
+                                </tr>
+            
+                                </table>
+                                
+                                
+                                
+                                ";
+                            }
+                        }
+                    }
+                  
+                ?>
 
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="" alt="" srcset=""></div>
-                        </td>
-
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="" alt="" srcset=""></div>
-                        </td>
-
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-                </table>
+                
+                
             </div>
 
 
@@ -317,6 +348,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   });
 });
 
+
+// Optional: Display the selected option
+const selectOptionInput = document.getElementById('selectOption');
+    const selectedOptionDisplay = document.getElementById('selectedOption');
+
+    selectOptionInput.addEventListener('input', function() {
+      selectedOptionDisplay.textContent = `You are sending the patient to: ${selectOptionInput.value}`;
+    });
 </script>
 <script src="js/main.js"></script>
 </html>

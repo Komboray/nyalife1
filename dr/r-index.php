@@ -1,3 +1,23 @@
+<?php
+session_start();
+// $_SESSION["username"];
+// $_SESSION["email"];
+include("database/connect.php");
+
+// $sql = "SELECT COUNT(*) 
+//         AS `total_users`
+//         FROM `appointments`";
+
+$sql = "SELECT * 
+        FROM `appointments`";
+$result = mysqli_query($conn, $sql);
+
+if($result){
+    $num = mysqli_num_rows($result);
+
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +52,7 @@
                 </li>
 
                 <li>
-                    <a href="index.php">
+                    <a href="r-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="title">Dashboard</span>
                     </a>
@@ -45,24 +65,14 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="appointments.php">
-                        <span class="material-symbols-outlined">bookmark</span>
-                        <span class="title">Medicine</span>
-                    </a>
-                </li>
+                
 
-                <li>
-                    <a href="results.php">
-                        <span class="material-symbols-outlined">glucose</span>
-                        <span class="title">Results</span>
-                    </a>
-                </li>
+                
 
                 
 
                 <li>
-                    <a href="chat.php">
+                    <a href="r-chat.php">
                         <span class="material-symbols-outlined">forum</span>
                         <span class="title">Chat</span>
                     </a>
@@ -106,7 +116,7 @@
         <div class="cardBox">
             <div class="card">
                 <div>
-                    <div class="numbers">11</div>
+                    <div class="numbers"><?php echo "{$num}" ?></div>
                     <div class="cardName">Appointments</div>
                 </div>
 
@@ -142,11 +152,21 @@
                 </div>
             </div> -->
 
+
+
         </div>
 
 
+        <!-- THIS IS THE ADDED SECTION IN THE SYSTEM -->
+
+
+
+
+        <!-- THIS IS THE ADDED SECTION OF THE TABLE IN THE SYSTEM -->
+
+
             <!-- NEW CUSTOMERS -->
-            <div class="recentCustomers">
+            <!-- <div class="recentCustomers">
                 <div class="cardHeader">
                     <h2>Recent Patients</h2>
                 </div>
@@ -192,7 +212,7 @@
                         </td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
 
     
         </div>

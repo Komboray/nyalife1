@@ -27,26 +27,21 @@
                 <li>
                     <a href="http://">
                         <span class="material-symbols-outlined">emergency</span>
-                        <span class="title">Dr's dashboard</span>
+                        <span class="title">Lab's dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="index.php">
+                    <a href="l-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
 
-                <li>
-                    <a href="appointments.php">
-                        <span class="material-symbols-outlined">bookmark</span>
-                        <span class="title">Medicine</span>
-                    </a>
-                </li>
+                
 
                 <li>
-                    <a href="results.php">
+                    <a href="l-results.php">
                         <span class="material-symbols-outlined">glucose</span>
                         <span class="title">Results</span>
                     </a>
@@ -55,7 +50,7 @@
                 
 
                 <li>
-                    <a href="chat.php">
+                    <a href="l-chat.php">
                         <span class="material-symbols-outlined">forum</span>
                         <span class="title">Chat</span>
                     </a>
