@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results</title>
+    <title>Dashboard</title>
 </head>
 
 <!-- MATERIAL ICONS FROM GOOGLE --> <!-- MATERIAL ICONS FROM GOOGLE -->
@@ -27,39 +27,32 @@
                 <li>
                     <a href="http://">
                         <span class="material-symbols-outlined">emergency</span>
-                        <span class="title">Nurse's dashboard</span>
+                        <span class="title">Admin's dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="index.php">
+                    <a href="a-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
 
+
                 <li>
-                    <a href="appointments.php">
+                    <a href="a-handle-visits.php">
                         <span class="material-symbols-outlined">bookmark</span>
-                        <span class="title">Medicine</span>
+                        <span class="title">Handle Visit</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="results.php">
+                    <a href="a-handle-users.php">
                         <span class="material-symbols-outlined">glucose</span>
-                        <span class="title">Results</span>
+                        <span class="title">Handle Users</span>
                     </a>
                 </li>
 
-                
-
-                <li>
-                    <a href="chat.php">
-                        <span class="material-symbols-outlined">forum</span>
-                        <span class="title">Chat</span>
-                    </a>
-                </li>
 
                 <li>
                     <a href="database/logout.php">
@@ -94,22 +87,46 @@
             </div> -->
 
         </div>
-        <!-- CARDS CARDS CARDS CARDS CARDS CARDS
+        <!-- CARDS CARDS CARDS CARDS CARDS CARDS -->
 
         <div class="cardBox">
             <div class="card">
                 <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
+                    <div class="numbers">11</div>
+                    <div class="cardName">Appointments</div>
                 </div>
 
                 <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
+                    <span class="material-symbols-outlined">book_online</span>
                 
                 </div>
             </div>
 
             <div class="card">
+                <div>
+                    <div class="numbers">15</div>
+                    <div class="cardName">Patient Profiles</div>
+                </div>
+
+                <div class="iconBx">
+                    <span class="material-symbols-outlined">groups</span>
+                
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">15401</div>
+                    <div class="cardName">Telemedicine</div>
+                </div>
+
+                <div class="iconBx">
+                    <span class="material-symbols-outlined">wifi_calling</span>
+                
+                </div>
+            </div>
+
+            <!-- <div class="card">
                 <div>
                     <div class="numbers">15401</div>
                     <div class="cardName">Daily News</div>
@@ -119,40 +136,16 @@
                     <span class="material-symbols-outlined">menu</span>
                 
                 </div>
-            </div>
+            </div> -->
 
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
-
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
-
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
-
-        </div> -->
+        </div>
 
         <!-- ORDER DETAILS LIST -->
         <div class="details">
 
             <div class="recentOrders">
                 <div class="cardHeader">
-                    <h2>Recent Results</h2>
+                    <h2>Recent Orders</h2>
                     <button type="button" class="btn"><a href="http://" style="text-decoration: none;">View all</a></button>
                 </div>
     
@@ -201,7 +194,7 @@
             <!-- NEW CUSTOMERS -->
             <div class="recentCustomers">
                 <div class="cardHeader">
-                    <h2>Recent Medicines</h2>
+                    <h2>Recent Patients</h2>
                 </div>
 
                 <table>
@@ -252,18 +245,6 @@
 
         
     </div>
-<script>
-    
-    // Menu toggle
-    let toggle = document.querySelector(".toggle");
-    let nav = document.querySelector(".navigation");
-    let main = document.querySelector(".main");
-    
-    toggle.onclick = function(){
-        nav.classList.toggle("active");
-        main.classList.toggle("active");
-    }
-</script>
 </body>
 <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS -->
 

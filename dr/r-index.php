@@ -140,17 +140,19 @@ if($result){
 
             
 
-            <!-- <div class="card">
+            <button type="button" class="card">
+            <div >
                 <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
+                    
+                    <div class="cardName">Book an appointment</div>
                 </div>
 
                 <div class="iconBx">
                     <span class="material-symbols-outlined">menu</span>
                 
                 </div>
-            </div> -->
+            </div>
+            </button>
 
 
 
@@ -219,6 +221,18 @@ if($result){
 
         
     </div>
+<script>
+    
+// Menu toggle
+let toggle = document.querySelector(".toggle");
+let nav = document.querySelector(".navigation");
+let main = document.querySelector(".main");
+
+toggle.onclick = function(){
+    nav.classList.toggle("active");
+    main.classList.toggle("active");
+}
+</script>
 </body>
 <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS -->
 

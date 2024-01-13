@@ -67,28 +67,28 @@ if(!empty($_POST["name"]) &&
                     <div class="input-field" id="nameField">
                         <span></span>
                         <input type="text" name="name" id="name" placeholder="Name">
-                        <div class="error" style = "color:#ff3860; font-size: 14px; height: 13px;"></div>
+                        <div class="error" ></div>
 
                     </div>
                     
                     <div class="input-field">
                         <span></span>
                         <input type="email" name="email" id="email" placeholder="Email">
-                        <div class="error" style = "color:#ff3860; font-size: 14px; height: 13px;"></div>            
+                        <div class="error" ></div>            
                     </div>
                     
 
                     <div class="input-field">
                         <span></span>
                         <input type="pass" name="pass" id="pass" placeholder="Password">
-                        <div class="error" style = "color:#ff3860; font-size: 14px; height: 13px;"></div>               
+                        <div class="error" ></div>               
                     </div>
                  
 
                     <div class="input-field">
                         <span></span>
                         <input type="password" name="pass2" id="pass2" placeholder="Conform Password">
-                        <div class="error" style = "color:#ff3860; font-size: 14px; height: 13px;"></div>            
+                        <div class="error" ></div>            
                     </div>
                     
                     <p>Lost Password <a href="">Click Here!</a></p>

@@ -2,9 +2,9 @@
 //we need to include the connection from the database
 
 include("database/connect.php");
-//we need to send the details to the database table ffor patients
+//we need to send the details to the database table for patients
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+
     if(isset($_POST["submit"])){
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -15,14 +15,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
             
 
-        $sql = "INSERT INTO `patients` (name,email,stage) 
-                VALUES ('$username', '$email' , '$rooms')";
+        $sql = "INSERT INTO `patients` (email, stage, username)
+                VALUES ('$email' , '$rooms', '$username')";
 
         try{
             $response = mysqli_query($conn, $sql);
         if($response){
 
             echo "Details have been sent to the database!";
+            header("Location: r-handle-patient.php");
+            exit();
             
         }else{
             mysqli_close($conn);
@@ -41,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     
 
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -89,16 +91,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <br>
 
                     <!-- this is the drop down box -->
-                    <label for="selectOption">Send the patient to a specific stage:</label>
+                    <!-- <label for="selectOption">Send the patient to a specific stage:</label>
                     <input type="text" id="selectOption" list="optionsList">
-                    
+                     -->
                     <!-- Dropdown options list -->
-                    <datalist id="optionsList">
-                        <option value="Triage" name ="rooms">
-                        <option value="Dr office" name ="rooms">
-                        <option value="Lab" name ="rooms">
+                    
+                    <select name= "rooms" id="optionsList">
+                        <option value="Triage">Triage</option>
+                        <option value="Dr office">Dr office</option>
+                        <option value="Lab">Lab</option>
                         <!-- Add more options as needed -->
-                    </datalist>
+                    </select>
                     <br>
 
                     <!-- Optional: Display the selected option -->
@@ -107,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
                     
-                    <button type="submit">Send to Triage</button>
+                    <button type="submit" name = "submit">Send to Triage</button>
                 </form>
         </div>
     </div>
@@ -116,12 +119,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="container">
         <div class="navigation">
             <ul>
-                <li>
+                <!-- <li>
                     <a href="http://">
                         <span class="material-symbols-outlined">emergency</span>
                         <span class="title">Receptionist's dashboard</span>
                     </a>
-                </li>
+                    
+                </li> -->
+                <img src="images/nya-logo.jpg" height="50" width="50">
 
                 <li>
                     <a href="r-index.php">
@@ -256,10 +261,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                                     echo "
                                     <tr>
-                                        <td>{$row["name"]}</td>
+                                        <td>{$row["username"]}</td>
                                         <td>{$row["stage"]}</td>
                                         <td>{$row["visit"]}</td>
-                                        <td><span class='status delivered'>delivered</span></td>
+                                        <td><span class='status delivered'>In the line</span></td>
                                     </tr>
                                     ";
                                 }
@@ -296,7 +301,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <tr>                
             
                                     <td>
-                                        <h4>{$row["name"]} <br> <span>{$row["email"]}</span></h4>
+                                        <h4>{$row["username"]} <br> <span>{$row["email"]}</span></h4>
                                     </td>
                                 </tr>
             
@@ -322,6 +327,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         
     </div>
+    <script>
+    
+    // Menu toggle
+    let toggle = document.querySelector(".toggle");
+    let nav = document.querySelector(".navigation");
+    let main = document.querySelector(".main");
+    
+    toggle.onclick = function(){
+        nav.classList.toggle("active");
+        main.classList.toggle("active");
+    }
+</script>
 </body>
 <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS -->
 <script>

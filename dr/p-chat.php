@@ -270,6 +270,18 @@ include("database/connect.php");
 
         
     </div>
+<script>
+    
+    // Menu toggle
+    let toggle = document.querySelector(".toggle");
+    let nav = document.querySelector(".navigation");
+    let main = document.querySelector(".main");
+    
+    toggle.onclick = function(){
+        nav.classList.toggle("active");
+        main.classList.toggle("active");
+    }
+</script>
 </body>
 <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS -->
 

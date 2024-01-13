@@ -1,26 +1,3 @@
-//add hovered class to e selected list item
-let list = document.querySelectorAll(".navigation li");
-const myButton = document.querySelector("#myButton");
-const myImg = document.querySelector("#myImg");
-
-myButton.addEventListener("click", () =>
- {
-    if(myImg.style.visibility == "hidden"){
-        myImg.style.visibility = "visible";
-    }
-    else{
-        myImg.style.visibility = "hidden";
-    }
- }
-)
-function activeLink() {
-    list.forEach((item) => {
-        item.classList.remove("hovered");
-    });
-    this.classList.add("hovered");
-}
-
-list.forEach((item)=> item.addEventListener("mouseover", activeLink));
 
 // Menu toggle
 let toggle = document.querySelector(".toggle");

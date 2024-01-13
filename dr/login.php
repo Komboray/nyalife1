@@ -30,13 +30,13 @@ session_start();
                     <div class="input-field">
                         <span></span>
                         <input type="email" name="email" id="email" placeholder="Email">
-                        <div class="error" style = "color:#ff3860; font-size: 14px; height: 13px;"></div>
+                        <div class="error" ></div>
                     </div>
 
                     <div class="input-field">
                         <span></span>
                         <input type="password" name="pass" id="pass" placeholder="Password">
-                        <div class="error" style = "color:#ff3860; font-size: 14px; height: 13px;"></div>
+                        <div class="error" ></div>
                     </div>
                     <p>Lost Password <a href="">Click Here!</a></p>
 
