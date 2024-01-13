@@ -1,12 +1,12 @@
 <?php
 include('connect.php');
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit-group'])){
 
-    $comment = $_POST['comment'];
+    $sms = $_POST['group-sms'];
 
     $sql = 'INSERT INTO
-    `group_messo`  values ('$comment', '')';
+    `group_messo`  values ('$sms', '')';
 
     $response = mysqli_query($conn, $sql);
 

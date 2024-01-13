@@ -28,18 +28,19 @@ include("database/connect.php");
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
         <div class="navigation">
+        <img src="nya-logo.jpg" height="70" width="290">
             <ul>
-                <li>
+                <!-- <li>
                     <a href="http://">
                         <span class="material-symbols-outlined">emergency</span>
                         <span class="title">Lab's dashboard</span>
                     </a>
-                </li>
+                </li> -->
 
                 <li>
                     <a href="l-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
-                        <span class="title">Dashboard</span>
+                        <span class="title">Lab's Dashboard</span>
                     </a>
                 </li>
 

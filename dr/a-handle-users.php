@@ -24,17 +24,18 @@
     <div class="container">
         <div class="navigation">
             <ul>
-                <li>
+            <img src="nya-logo.jpg" height="70" width="290">
+                <!-- <li>
                     <a href="http://">
                         <span class="material-symbols-outlined">emergency</span>
                         <span class="title">Admin's dashboard</span>
                     </a>
-                </li>
+                </li> -->
 
                 <li>
                     <a href="a-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
-                        <span class="title">Dashboard</span>
+                        <span class="title">Admin's Dashboard</span>
                     </a>
                 </li>
 

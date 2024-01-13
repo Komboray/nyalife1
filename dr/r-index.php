@@ -41,20 +41,22 @@ if($result){
 <body>
 
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
-    <div class="container">
+    <div class="container" >
         <div class="navigation">
+        
             <ul>
-                <li>
+                <!-- <li>
                     <a href="http://">
                         <span class="material-symbols-outlined">emergency</span>
                         <span class="title">Receptionist's dashboard</span>
                     </a>
-                </li>
+                </li> -->
+                <img src="nya-logo.jpg" height="70" width="290">
 
                 <li>
                     <a href="r-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
-                        <span class="title">Dashboard</span>
+                        <span class="title">Receptionist's Dashboard</span>
                     </a>
                 </li>
 
@@ -114,10 +116,10 @@ if($result){
         <!-- CARDS CARDS CARDS CARDS CARDS CARDS -->
 
         <div class="cardBox">
-            <div class="card">
+            <div class="card" style = "background-color:#FF00FF;">
                 <div>
-                    <div class="numbers"><?php echo "{$num}" ?></div>
-                    <div class="cardName">Appointments</div>
+                    <div class="numbers" style = "color:white" ><?php echo "{$num}" ?></div>
+                    <div class="cardName" style = "color:white">Appointments</div>
                 </div>
 
                 <div class="iconBx">
@@ -126,10 +128,10 @@ if($result){
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" style = "background-color:red">
                 <div>
-                    <div class="numbers">15</div>
-                    <div class="cardName">Patient Profiles</div>
+                    <div class="numbers" style = "color:white">15</div>
+                    <div class="cardName" style = "color:white">Patient Profiles</div>
                 </div>
 
                 <div class="iconBx">
@@ -139,12 +141,12 @@ if($result){
             </div>
 
             
-
-            <button type="button" class="card">
+            
+            <button type="button" class="card" style = "background-color:black">
             <div >
                 <div>
                     
-                    <div class="cardName">Book an appointment</div>
+                    <div class="cardName" style = "color:white">Book an appointment</div>
                 </div>
 
                 <div class="iconBx">

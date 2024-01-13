@@ -118,6 +118,7 @@ include("database/connect.php");
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
         <div class="navigation">
+        <img src="images/nya-logo.jpg" height="50" width="250">
             <ul>
                 <!-- <li>
                     <a href="http://">
@@ -126,12 +127,12 @@ include("database/connect.php");
                     </a>
                     
                 </li> -->
-                <img src="images/nya-logo.jpg" height="50" width="50">
+                <img src="nya-logo.jpg" height="73" width="290">
 
                 <li>
                     <a href="r-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
-                        <span class="title">Dashboard</span>
+                        <span class="title">Receptionist's Dashboard</span>
                     </a>
                 </li>
 
@@ -196,17 +197,18 @@ include("database/connect.php");
         <div class="cardBox">
             
 
-            <div class="card" id="showPopupBtn">
-                <div>
-                    
-                    <div class="cardName"><button type="button" class='hero-btn red-btn' id="showPopupBtn" style = "color:yellow; ">Click to add a patient to the queue</button></div>
-                </div>
-
+            <button class="card" id="showPopupBtn" style = "background-color:#FF00FF;">
+                <!-- <div> -->
+                   
+                    <!-- <div class="cardName"><button type="button" class='hero-btn red-btn' id="showPopupBtn" style = "color:red; ">Click to add a patient to the queue</button></div> -->
+                <!-- </div> -->
+                <div class="cardName" style = "color:white">Click to add a patient to the queue</div>
+                
                 <div class="iconBx">
-                    <span class="material-symbols-outlined">recent_patient</span>
+                    <span class="material-symbols-outlined" style = "color:white">recent_patient</span>
                 
                 </div>
-            </div>
+            </button>
 
             
 

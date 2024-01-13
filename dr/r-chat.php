@@ -34,18 +34,19 @@ session_start();
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
         <div class="navigation">
+        
             <ul>
-                <li>
+                <!-- <li>
                     <a href="http://">
                         <span class="material-symbols-outlined">emergency</span>
                         <span class="title">Dr's dashboard</span>
                     </a>
-                </li>
-
+                </li> -->
+                <img src="nya-logo.jpg" height="70" width="290">
                 <li>
                     <a href="r-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
-                        <span class="title">Dashboard</span>
+                        <span class="title">Receptionist's Dashboard</span>
                     </a>
                 </li>
 
@@ -185,13 +186,14 @@ session_start();
                                         <h3>Start a chat</h3>
                                         <form action='single_mess.php' class='comment-form' method = 'POST'>
                                             
-                                            <textarea name='comment' id='comment' rows='5' placeholder='Your comment' required></textarea>
-                                            <button type='submit' class='hero-btn red-btn'>POST COMMENT</button>
+                                            <textarea name='individual-sms' id='comment' rows='5' placeholder='Enter your comment' required></textarea>
+                                            <button type='submit-individual' name = 'submit-individual' class='hero-btn red-btn'>SEND MESSAGE</button>
                                         </form>         
                                         </div>
 
                                         
                                 </div>
+                                <hr>
                                 
                                 <h1 style='color:red;text-align:center;'>Group Chat</h1>
         
@@ -205,8 +207,8 @@ session_start();
                                         <h3>Start a chat</h3>
                                         <form action='group_mess.php' class='comment-form' method = 'POST'>
                                             
-                                            <textarea name='comment' id='comment' rows='5' placeholder='Your comment' required></textarea>
-                                            <button type='submit' class='hero-btn red-btn'>POST COMMENT</button>
+                                            <textarea name='group-sms' id='comment' rows='5' placeholder='Enter your comment' required></textarea>
+                                            <button type='submit' name = 'submit-group' class='hero-btn red-btn'>SEND MESSAGE</button>
                                         </form>         
                                         </div>
 
