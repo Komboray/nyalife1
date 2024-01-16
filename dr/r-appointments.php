@@ -23,7 +23,7 @@
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
         <div class="navigation">
-        <img src="nya-logo.jpg" height="71" width="290">
+        <img src="nya-logo.jpg" height="100" width="290">
             <ul>
                 <!-- <li>
                     <a href="http://">

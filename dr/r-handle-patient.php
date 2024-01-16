@@ -15,21 +15,21 @@ include("database/connect.php");
         
             
 
-        $sql = "INSERT INTO `patients` (email, stage, username)
-                VALUES ('$email' , '$rooms', '$username')";
+        $sql = "INSERT INTO `patients` (email, rooms, username, date)
+                VALUES ('$email' , '$rooms', '$username', CURRENT_DATE)";
 
         try{
             $response = mysqli_query($conn, $sql);
-        if($response){
+            if($response){
 
-            echo "Details have been sent to the database!";
-            header("Location: r-handle-patient.php");
-            exit();
-            
-        }else{
-            mysqli_close($conn);
-            exit();
-        }
+                echo "Details have been sent to the database!";
+                header("Location: r-handle-patient.php");
+                exit();
+                
+            }else{
+                mysqli_close($conn);
+                exit();
+            }
         }catch(mysqli_sql_exception $e){
             if ($e->getCode() == 1062) { // 1062 is the MySQL error code for duplicate entry
                 // Handle duplicate entry error
@@ -51,7 +51,126 @@ include("database/connect.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Reception</title>
+    <style>
+        /* this is the css for the pop up form */
+        .container form{
+    margin-top: -20px;
+    transition: all 0.3s ease;
+}
+
+.container form .data{
+    height: 45px;
+    width: 100%;
+    margin: 40px 0;
+}
+form .data label{
+    font-size: 18px;
+}
+
+form .data input{
+    height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    font-size: 17px;
+    border: 1px solid silver;
+}
+
+form .data input:focus{
+    border-color: #3498db;
+    border-bottom-width: 2px;
+}
+
+form .forget-pass{
+    margin-top:  -8px;
+}
+
+form .forget-pass a{
+    color: #3498db;
+    text-decoration: none;
+}
+
+form .forget-pass a:hover{
+    text-decoration: underline;
+}
+
+form .btn{
+    margin: 30px 0;
+    height: 45px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+form .btn .inner{
+    height: 100%;
+    width: 300%;
+    position: absolute;
+    left: -100%;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+form .btn:hover .inner{
+    left: 0;
+}
+
+form .btn button{
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: none;
+    color: #fff;
+    background: #11131e;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+form .signup-link{
+    text-align: center;
+}
+
+form .signup-link a{
+    color: #3498db;
+    text-decoration: none;
+}
+
+form .signup-link a:hover{
+    text-decoration: underline;
+}
+
+#errorName{
+    color: red;
+ }
+
+      /* THIS IS THE CSS FOR THE FORM USED TO EDIT USER DETAILS ON THE SPAN*/
+      /* Style for the popup form container */
+    .popup-form-container {
+      height: 300px;
+      width: 200px; 
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #f1f1f1;
+      padding: 20px;
+      border: 1px solid #ccc;
+      z-index: 1;
+    }
+
+    /* Style for the span element */
+    .popup-trigger {
+      cursor: pointer;
+      text-decoration: underline;
+      color: blue;
+    }
+    </style>
 </head>
 
 <!-- MATERIAL ICONS FROM GOOGLE --> <!-- MATERIAL ICONS FROM GOOGLE -->
@@ -71,49 +190,63 @@ include("database/connect.php");
 
     <div id="popupForm" class="popup">
         <div class="popup-content">
-                <span class="close" id="closeBtn">&times;</span>
-                
-                <!-- Your form content goes here -->
-                <form id="form" action = "<?php htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
-                    <!-- Add your form fields here -->
-                    <h1>Add patient details</h1>
-                    <br>
-                    <div class="input-control">
-                        <label for="username">Username:</label>
-                        <input id="username" name="username" type="text" required>
-                        
-                    </div>
-                    <div class="input-control">
-                        <label for="email">Email:</label>
-                        <input id="email" name="email" type="email" required>
-                        
-                    </div>
-                    <br>
+            <span class="close" id="closeBtn">&times;</span>
+            <!-- WE HAVE ADDED THE MODIFIED FIEL HERE -->
+            <div class="text">Add patient details</div>
+            <form id="form" action = "<?php htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
 
-                    <!-- this is the drop down box -->
-                    <!-- <label for="selectOption">Send the patient to a specific stage:</label>
-                    <input type="text" id="selectOption" list="optionsList">
-                     -->
-                    <!-- Dropdown options list -->
-                    
+              <div class="data">
+                <label for="username">Username:</label>
+                <input id="username" name="username" type="text" required>
+              </div>
+
+              <div class="data">
+                <label for="email">Email:</label>
+                <input id="email" name="email" type="email" required>
+              </div>
+
+              <div class="data">
                     <select name= "rooms" id="optionsList">
                         <option value="Triage">Triage</option>
                         <option value="Dr office">Dr office</option>
                         <option value="Lab">Lab</option>
                         <!-- Add more options as needed -->
                     </select>
-                    <br>
+              </div>
 
-                    <!-- Optional: Display the selected option -->
-                    <p id="selectedOption"></p>
+              
 
+              <div class="btn">
+                <!-- <div class = "inner"></div> -->
+                <button type = "submit" name = "submit"  >SEND TO TRIAGE</button><br>
+                
+              </div>
+            </form>
 
-
-                    
-                    <button type="submit" name = "submit">Send to Triage</button>
-                </form>
+            <!-- END OF THE MODIFIED FORM -->
         </div>
     </div>
+
+    <!-- THIS IS THE FORM THAT EDITS USER DETAILS -->
+
+    <div id="popupFormEdit" class="popup-form-container">
+        <form action = "edit-from.php" method = "POST">
+            <label for="name">Enter the email you want to update:</label>
+            <input type="email" id="email-compared" name="email-compared" placeholder = "Confrim from recent patients" required><br>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name-edit" name="name-edit" placeholder = "Enter new name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email-edit" name="email-edit" placeholder = "Enter new email" required><br>
+            <br>
+            <button type="submit" name="Send-update">Submit the Edit</button>
+        </form>
+        <br>
+        <span onclick="closePopupForm()">Close</span>
+    </div>
+
+    <!-- THIS IS THE END OF THE FORM THAT EDITS USER DETAILS -->
 
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
@@ -127,7 +260,7 @@ include("database/connect.php");
                     </a>
                     
                 </li> -->
-                <img src="nya-logo.jpg" height="73" width="290">
+                <img src="nya-logo.jpg" height="100" width="290">
 
                 <li>
                     <a href="r-index.php">
@@ -246,13 +379,18 @@ include("database/connect.php");
                             <td>Stage</td>
                             <td>Visit</td>
                             <td>Status</td>
+                            <a href="http://"><td></td></a>
+                            
                         </tr>
                     </thead>
         
                     <tbody>
                         <?php
+                        $currentDate = date("Y-m-d");
+                        echo "<h1>$currentDate </h1>";
                         $sql = "SELECT *
-                                FROM `patients`";
+                                FROM `patients`
+                                WHERE `date` = '$currentDate'";
 
                         $result = mysqli_query($conn, $sql);
                         if($result){
@@ -264,15 +402,17 @@ include("database/connect.php");
                                     echo "
                                     <tr>
                                         <td>{$row["username"]}</td>
-                                        <td>{$row["stage"]}</td>
+                                        <td>{$row["rooms"]}</td>
                                         <td>{$row["visit"]}</td>
                                         <td><span class='status delivered'>In the line</span></td>
+                                        <td><span class='material-symbols-outlined popup-trigger' onclick='openPopupForm()'>edit</span></td>
                                     </tr>
                                     ";
                                 }
                             }
                         }
                         
+
 
                         ?>
                 
@@ -335,6 +475,8 @@ include("database/connect.php");
     let toggle = document.querySelector(".toggle");
     let nav = document.querySelector(".navigation");
     let main = document.querySelector(".main");
+
+
     
     toggle.onclick = function(){
         nav.classList.toggle("active");
@@ -375,6 +517,22 @@ const selectOptionInput = document.getElementById('selectOption');
     selectOptionInput.addEventListener('input', function() {
       selectedOptionDisplay.textContent = `You are sending the patient to: ${selectOptionInput.value}`;
     });
+
+ // Function to open the popup form for editing user details
+ function openPopupForm() {
+    var popupForm = document.getElementById('popupFormEdit');
+    popupForm.style.display = 'block';
+  }
+
+  // Function to close the popup form for editing user details
+  function closePopupForm() {
+    var popupForm = document.getElementById('popupFormEdit');
+    popupForm.style.display = 'none';
+  }
 </script>
 <script src="js/main.js"></script>
 </html>
+
+
+
+
