@@ -30,7 +30,9 @@ try {
     }
 
     // Prepare and execute the SQL query
-    $stmt = $conn->prepare("INSERT INTO Staff (first_name, last_name, dob, email, phone, address, gender, department, specialization, national_id, profile_photo, password) VALUES (:firstName, :lastName, :dob, :email, :phone, :address, :gender, :department, :specialization, :nationalId, :profilePhoto, :password)");
+    $stmt = $conn->prepare("INSERT INTO Staff (role, designation, first_name, last_name, dob, email, phone, address, gender, department, specialization, national_id, profile_photo, password) VALUES (:role, :designation, :firstName, :lastName, :dob, :email, :phone, :address, :gender, :department, :specialization, :nationalId, :profilePhoto, :password)");
+    $stmt->bindParam(':role', $role);
+    $stmt->bindParam(':designation', $designation);
     $stmt->bindParam(':firstName', $firstName);
     $stmt->bindParam(':lastName', $lastName);
     $stmt->bindParam(':dob', $dob);

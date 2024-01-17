@@ -192,6 +192,26 @@
     <div id="addStaffForm" style="overflow:scroll; height: 600px;" >
         <h3>Add Staff</h3>
         <form id="staffForm" onsubmit="addStaff(event)">
+
+        <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="Admin">Admin</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Accountant">Accountant</option>
+                <option value="Pharmacist">Pharmacist</option>
+                <option value="Receptionist">Receptionist</option>
+                <option value="Nurse">Nurse</option>
+                <option value="Radiologist">Radiologist</option>
+                <option value="Pathologist">Pathologist</option>
+            </select>
+
+            <label for="desination">Designation:</label>
+            <select id="designation" name="designation" required>
+                <option value="Dr">Dr</option>
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+            </select>
+
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName" required>
 
@@ -216,11 +236,26 @@
                 <option value="F">Female</option>
             </select>
 
-            <label for="department">Department:</label>
-            <input type="text" id="department" name="department">
+            <label for="Department">Department:</label>
+            <select id="Department" name="Department" required>
+                <option value="OPD">OPD</option>
+                <option value="IPD">IPD</option>
+                <option value="Medical Department">Medical Department</option>
+                <option value="Front Office">Front Office</option>
+                <option value="Finance">Finance</option>
+                <option value="Pharmacy">Pharmacy</option>
+            </select>
 
-            <label for="specialization">Specialization:</label>
-            <input type="text" id="specialization" name="specialization">
+            <label for="Specialization">Specialization:</label>
+            <select id="specialization" name="specialization" required>
+            <option value="Radiology and Imaging">Radiology and Imaging</option>
+                <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+                <option value="Nurse">Nurse</option>
+                <option value="Reception">Reception</option>
+                <option value="Accounts">Accounts</option>
+                <option value="Pharmacy">Pharmacy</option>
+                
+            </select>
 
             <label for="nationalId">National ID:</label>
             <input type="text" id="nationalId" name="nationalId">
