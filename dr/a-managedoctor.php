@@ -237,7 +237,7 @@
             </select>
 
             <label for="Department">Department:</label>
-            <select id="Department" name="Department" required>
+            <select id="department" name="department" required>
                 <option value="OPD">OPD</option>
                 <option value="IPD">IPD</option>
                 <option value="Medical Department">Medical Department</option>
