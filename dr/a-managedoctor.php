@@ -2,85 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
      
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+#controls {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+select, input {
+    margin-right: 10px;
+    padding: 8px;
+}
+
+button {
+    padding: 8px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#staff-data-container {
+    margin: 20px;
+    overflow-x: auto; /* Enable horizontal scrolling when needed */
+}
+
+.staff-table {
+    border-collapse: collapse;
+    max-width: 100%; /* Make the table responsive */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.staff-table th, .staff-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 12px;
+}
+
+.staff-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.staff-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.staff-table i {
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 18px;
+}
+
+.staff-table i:hover {
+    color: #4CAF50;
+}
+
+
+        </style>
     
-       <style>
-         body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        input[type=text], input[type=email], input[type=date], input[type=password], select, input[type=file] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        #addStaffForm {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 2;
-            border-radius: 5px;
-        }
-
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-       </style>
     
 </head>
 
@@ -175,195 +173,25 @@
 
         </div>
        
+        <body>
 
-<body>
+<div id="controls">
+    <form method="GET" action="">
+        <select name="recordsPerPage" onchange="this.form.submit()">
+            <option value="10" <?php echo isset($_GET['recordsPerPage']) && $_GET['recordsPerPage'] == 10 ? 'selected' : ''; ?>>10</option>
+            <option value="20" <?php echo isset($_GET['recordsPerPage']) && $_GET['recordsPerPage'] == 20 ? 'selected' : ''; ?>>20</option>
+            <option value="30" <?php echo isset($_GET['recordsPerPage']) && $_GET['recordsPerPage'] == 30 ? 'selected' : ''; ?>>30</option>
+        </select>
+        <input type="text" name="search" placeholder="Search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+    </form>
+    <a href="add_staff.php">Add Staff</a>
+</div>
 
+<div id="staff-data-container">
+    <?php include 'get_staff_data.php'; ?>
+</div>
 
-
-    <h2>Staff Information</h2>
-
-    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search by First Name">
-    <button onclick="toggleForm()">Add Staff</button>
-
-<!-- Overlay to darken the background -->
-<div id="overlay"></div>
-
-    <!-- Add Staff Form (floating page) -->
-    <div id="addStaffForm" style="overflow:scroll; height: 600px;" >
-        <h3>Add Staff</h3>
-        <form id="staffForm" onsubmit="addStaff(event)">
-
-        <label for="role">Role:</label>
-            <select id="role" name="role" required>
-                <option value="Admin">Admin</option>
-                <option value="Doctor">Doctor</option>
-                <option value="Accountant">Accountant</option>
-                <option value="Pharmacist">Pharmacist</option>
-                <option value="Receptionist">Receptionist</option>
-                <option value="Nurse">Nurse</option>
-                <option value="Radiologist">Radiologist</option>
-                <option value="Pathologist">Pathologist</option>
-            </select>
-
-            <label for="desination">Designation:</label>
-            <select id="designation" name="designation" required>
-                <option value="Dr">Dr</option>
-                <option value="Mr">Mr</option>
-                <option value="Mrs">Mrs</option>
-            </select>
-
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
-
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
-
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone">
-
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address">
-
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
-                <option value="M">Male</option>
-                <option value="F">Female</option>
-            </select>
-
-            <label for="Department">Department:</label>
-            <select id="department" name="department" required>
-                <option value="OPD">OPD</option>
-                <option value="IPD">IPD</option>
-                <option value="Medical Department">Medical Department</option>
-                <option value="Front Office">Front Office</option>
-                <option value="Finance">Finance</option>
-                <option value="Pharmacy">Pharmacy</option>
-            </select>
-
-            <label for="Specialization">Specialization:</label>
-            <select id="specialization" name="specialization" required>
-            <option value="Radiology and Imaging">Radiology and Imaging</option>
-                <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
-                <option value="Nurse">Nurse</option>
-                <option value="Reception">Reception</option>
-                <option value="Accounts">Accounts</option>
-                <option value="Pharmacy">Pharmacy</option>
-                
-            </select>
-
-            <label for="nationalId">National ID:</label>
-            <input type="text" id="nationalId" name="nationalId">
-
-            <label for="profilePhoto">Profile Photo:</label>
-            <input type="file" id="profilePhoto" name="profilePhoto">
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Add Staff</button>
-            <button type="button" onclick="cancelAddStaff()">Cancel</button>
-        </form>
-    </div>
-
-    <table id="staffTable">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Gender</th>
-                <th>Department</th>
-                <th>Specialization</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Table rows will be filled dynamically using PHP -->
-        </tbody>
-    </table>
-
-    <script>
-
-function toggleForm() {
-            const formDiv = document.getElementById('addStaffForm');
-            const overlay = document.getElementById('overlay');
-            if (formDiv.style.display === 'none') {
-                formDiv.style.display = 'block';
-                overlay.style.display = 'block';
-            } else {
-                formDiv.style.display = 'none';
-                overlay.style.display = 'none';
-            }
-        }
-
-        function cancelAddStaff() {
-            document.getElementById('staffForm').reset();
-            toggleForm();
-        }
-        
-          function toggleForm() {
-            const formDiv = document.getElementById('addStaffForm');
-            formDiv.style.display = formDiv.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function addStaff(event) {
-            event.preventDefault();
-
-            // Fetch form data and send it to the server using AJAX
-            const formData = new FormData(document.getElementById('staffForm'));
-
-            const xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        // Reload staff data after successful addition
-                        loadStaffData();
-                        // Clear form fields
-                        document.getElementById('staffForm').reset();
-                        // Hide the form
-                        toggleForm();
-                    } else {
-                        console.error('Error adding staff');
-                    }
-                }
-            };
-
-            xhr.open('POST', 'addStaff.php', true);
-            xhr.send(formData);
-        }
-
-        function searchTable() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toUpperCase();
-            const table = document.getElementById('staffTable');
-            const rows = table.getElementsByTagName('tr');
-
-            for (let i = 0; i < rows.length; i++) {
-                const firstNameColumn = rows[i].getElementsByTagName('td')[1];
-                if (firstNameColumn) {
-                    const textValue = firstNameColumn.textContent || firstNameColumn.innerText;
-                    if (textValue.toUpperCase().indexOf(filter) > -1) {
-                        rows[i].style.display = '';
-                    } else {
-                        rows[i].style.display = 'none';
-                    }
-                }
-            }
-        }
-    </script>
-
-    <script src="js/loadData.js"></script>
 </body>
-</html>
-
             </div>
 
     

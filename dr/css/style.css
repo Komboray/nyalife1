@@ -11,7 +11,7 @@
 
 :root{
     --black:var(--black1);
-    --blue:#2e2185;
+    --blue:#0d1d52;
     --white:#fff;
     --gray: #f5f5f5;
     --black1:#222;
@@ -593,4 +593,4 @@ nav .fa{
 
                                       /* THIS IS THE CSS FOR THE TABLE */
 
-
+                                
