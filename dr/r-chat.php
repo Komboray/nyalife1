@@ -42,7 +42,7 @@ session_start();
                         <span class="title">Dr's dashboard</span>
                     </a>
                 </li> -->
-                <img src="nya-logo.jpg" height="70" width="290">
+                <img src="nya-logo.jpg" height="100" width="290">
                 <li>
                     <a href="r-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
@@ -55,12 +55,14 @@ session_start();
                         <span class="material-symbols-outlined">recent_patient</span>
                         <span class="title">Handle Patient</span>
                     </a>
+                </li>                
+
+                <li>
+                    <a href="r-appointments.php">
+                        <span class="material-symbols-outlined">book_online</span>
+                        <span class="title">Appointments</span>
+                    </a>
                 </li>
-
-                
-
-                
-
                 
 
                 <li>

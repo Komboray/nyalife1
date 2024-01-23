@@ -46,7 +46,12 @@
                     </a>
                 </li>
 
-                
+                <li>
+                    <a href="r-appointments.php">
+                        <span class="material-symbols-outlined">book_online</span>
+                        <span class="title">Appointments</span>
+                    </a>
+                </li>
 
                 
 

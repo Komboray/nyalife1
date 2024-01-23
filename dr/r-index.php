@@ -43,7 +43,7 @@ if($result){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Reception</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         /* css for pop-up */
@@ -230,9 +230,12 @@ if($result){
                     </a>
                 </li>
 
-                
-
-                
+                <li>
+                    <a href="r-appointments.php">
+                        <span class="material-symbols-outlined">book_online</span>
+                        <span class="title">Appointments</span>
+                    </a>
+                </li>
 
                 
 
@@ -279,11 +282,11 @@ if($result){
         <!-- CARDS CARDS CARDS CARDS CARDS CARDS -->
 
         <div class="cardBox">
-            <div class="card" style = "background-color:#FF00FF;">
-                <div>
+            <div href ="r-appointments.php" class="card" style = "background-color:#FF00FF;">
+                <a href ="r-appointments.php" style = "text-decoration: none">
                     <div class="numbers" style = "color:white" ><?php echo "{$num}" ?></div>
                     <div class="cardName" style = "color:white">Appointments</div>
-                </div>
+                </a>
 
                 <div class="iconBx">
                     <span class="material-symbols-outlined">book_online</span>
@@ -332,6 +335,14 @@ if($result){
                 <div class="head" style = "text-align: center;">
                 <br>
                 <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                
+                
                     <h1>
                         Booking Form
                     </h1>
@@ -343,11 +354,11 @@ if($result){
 
 
                 <!-- FORM BODY BOX -->
-                <form class="body-box" action = "form.php" style = "padding: 20px;">
+                <form class="body-box" action = "Classes/booking-form.php" method = "POST" style = "padding: 20px;">
                     <div class="row" style = "display: flex; justify-content: space-between; padding: 5px 0;">
                         <div class="col-6" style = "width: 48%;">
-                            <p>Your Name</p>
-                            <input type="text" name="fname" id="fname" placeholder = "Your Name" style = "width: 100%;
+                            <p>Patient's Name</p>
+                            <input type="text" name="fname" id="fname" placeholder = "Enter Patient's Name" style = "width: 100%;
                                             background-color: #141824;
                                             border: none;
                                             outline: none;
@@ -356,7 +367,7 @@ if($result){
                                             margin-top: 5px;
                                             resize: none;
                                             color: #fff;
-                                            border-radius: 10px;">
+                                            border-radius: 10px;" required>
                         </div>
 
                         <div class="col-6" style = "width: 48%;">
@@ -370,13 +381,55 @@ if($result){
                                             margin-top: 5px;
                                             resize: none;
                                             color: #fff;
-                                            border-radius: 10px;">
+                                            border-radius: 10px;" required>
                         </div>
                     </div>
 
                     <div class="row" style = "display: flex; justify-content: space-between; padding: 5px 0;">
                         <div class="col-6" style = "width: 48%;">
-                            <p>Select Date</p>
+                            <p>Choose Doctor available</p>
+                            <select name="dr" id="dr" style = "width: 100%;
+                                            background-color: #141824;
+                                            border: none;
+                                            outline: none;
+                                            padding: 10px;
+                                            font-family: 'Poppins';
+                                            margin-top: 5px;
+                                            resize: none;
+                                            color: #fff;
+                                            border-radius: 10px;" required>
+                                <option value="Dr. Shola">Dr. Schola</option>
+                                
+
+                            </select>
+                        </div>
+
+                        <div class="col-6" style = "width: 48%;">
+                            <p>Select Service</p>
+                            <select name="services" id="services" style = "width: 100%;
+                                            background-color: #141824;
+                                            border: none;
+                                            outline: none;
+                                            padding: 10px;
+                                            font-family: 'Poppins';
+                                            margin-top: 5px;
+                                            resize: none;
+                                            color: #fff;
+                                            border-radius: 10px;" required>
+                                <option value="Obstetrics">Obstetrics - ksh.3000</option>
+                                <option value="Gynecology">Gynecology - ksh.3000</option>
+                                <option value="Teens Health">Teens Health - ksh.2500</option>
+                                <option value="Surgeries">Surgeries - ksh.20000</option>
+                                <option value="In Office Procedures">In Office Procedures - ksh.10000</option>
+                                
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" style = "display: flex; justify-content: space-between; padding: 5px 0;">
+                        <div class="col-6" style = "width: 48%;">
+                            <p>Select the Date</p>
                             <input type="date" name="date" id="date" style = "width: 100%;
                                             background-color: #141824;
                                             border: none;
@@ -386,12 +439,12 @@ if($result){
                                             margin-top: 5px;
                                             resize: none;
                                             color: #fff;
-                                            border-radius: 10px;">
+                                            border-radius: 10px;" required>
                         </div>
 
                         <div class="col-6" style = "width: 48%;">
-                            <p>Select Number</p>
-                            <select name="s-select" id="" style = "width: 100%;
+                            <p>Choose the time</p>
+                            <select name="time-select" id="time" style = "width: 100%;
                                             background-color: #141824;
                                             border: none;
                                             outline: none;
@@ -401,10 +454,23 @@ if($result){
                                             resize: none;
                                             color: #fff;
                                             border-radius: 10px;">
-                                <option value="1">Select Number</option>
-                                <option value="2">Select Number</option>
-                                <option value="3">Select Number</option>
-                                <option value="4">Select Number</option>
+                                <option value="8.00AM - 8.30AM">8.00AM - 8.30AM</option>
+                                <option value="8.30AM - 9.00AM">8.30AM - 9.00AM</option>
+                                <option value="9.00AM - 9.30AM">9.00AM - 9.30AM</option>
+                                <option value="9.30AM - 10.00AM">9.30AM - 10.00AM</option>
+                                <option value="10.00AM - 10.30AM">10.00AM - 10.30AM</option>
+                                <option value="10.30AM - 11.00AM">10.30AM - 11.00AM</option>
+                                <option value="11.00AM - 11.30AM">11.00AM - 11.30AM</option>
+                                <option value="11.30AM - 12.00PM">11.30AM - 12.00PM</option>
+                                <option value="12.00PM - 12.30PM">12.00PM - 12.30PM</option>
+                                <option value="12.30PM - 1.00PM">12.30PM - 1.00PM</option>
+                                <option value="1.00PM - 1.30PM">1.00PM - 1.30PM</option>
+                                <option value="1.30PM - 2.00PM">1.30PM - 2.00PM</option>
+                                <option value="2.00PM - 2.30PM">2.00PM - 2.30PM</option>
+                                <option value="2.30PM - 3.00PM">2.30PM - 3.00PM</option>
+                                <option value="3.30PM - 4.00PM">3.30PM - 4.00PM</option>
+                                <option value="4.00PM - 4.30PM">4.00PM - 4.30PM</option>
+                                <option value="4.30PM - 5.00PM">4.30PM - 5.00PM</option>
 
                             </select>
                         </div>
@@ -412,7 +478,7 @@ if($result){
 
                     <div class="row" style = "display: flex; justify-content: space-between; padding: 5px 0;">
                         <div class="col-12" style = "width: 100%;">
-                            <p>Messages</p>
+                            <p>Enter Email to be sent to the patient for confirmation of booking</p>
                             <textarea name="messages" id="messages" cols="3" rows="10" style = "width: 100%;
                                             background-color: #141824;
                                             border: none;
@@ -422,7 +488,26 @@ if($result){
                                             margin-top: 5px;
                                             resize: none;
                                             color: #fff;
-                                            border-radius: 10px;"></textarea>
+                                            border-radius: 10px;" ></textarea>
+                        </div>
+
+
+                    </div>
+                    
+
+                    <div class="row">
+                        <div class="col-3">
+                            <button type="button" onclick="addPredefinedText()" style = "width: 100%;
+                                            background-color: purple;
+                                            border: none;
+                                            outline: none;
+                                            padding: 10px;
+                                            font-family: 'Poppins';
+                                            margin-top: 5px;
+                                            resize: none;
+                                            color: #fff;
+                                            border-radius: 10px;">Generate a Predefined Email</button>
+                            
                         </div>
 
 
@@ -430,7 +515,7 @@ if($result){
 
                     <div class="row">
                         <div class="col-3">
-                            <input type="submit" value="Submit" style = "width: 100%;
+                            <input type="submit" name ="Submit-booking" value="Submit-booking" style = "width: 100%;
                                             background-color: #141824;
                                             border: none;
                                             outline: none;
@@ -578,6 +663,38 @@ function openPopupForm() {
   function closePopupForm() {
     var popupForm = document.getElementById('popupFormEdit');
     popupForm.style.display = 'none';
+  }
+
+  //this is the function that creates the predefined email
+  function addPredefinedText() {
+    // Get the textarea element
+    var textarea = document.getElementById('messages');
+
+    // Get the user input value
+    var userInputValue = document.getElementById("fname").value;
+
+    // Get the user input value
+    var dateInputValue = document.getElementById("date").value;
+
+    // Get the user input value
+    var timeInputValue = document.getElementById("time").value;
+     
+    // Get the user input value
+    var selectElement = document.getElementById("dr");
+    // Change the selected option to the second option (index 1)
+    var selectedDr = selectElement.options[selectElement.selectedIndex].text;
+
+    // Get the user input value
+    var selectService = document.getElementById("services");
+    // Change the selected option to the second option (index 1)
+    var selectedServices = selectService.options[selectService.selectedIndex].text;
+
+
+    // Define your predefined subset of text
+    var predefinedText = "Dear " + userInputValue + ", \nYou have an appointment with "+ selectedDr + "\non " + dateInputValue + " at " + timeInputValue + "\nyour service is "+ selectedServices +"\nThank you for choosing Nyalife Clinic.";
+
+    // Add the predefined text to the textarea
+    textarea.value = predefinedText;
   }
 </script>
 </body>

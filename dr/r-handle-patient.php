@@ -278,10 +278,13 @@ form .signup-link a:hover{
                     </a>
                 </li>
 
-                
 
-                
-
+                <li>
+                    <a href="r-appointments.php">
+                        <span class="material-symbols-outlined">book_online</span>
+                        <span class="title">Appointments</span>
+                    </a>
+                </li>
                 
 
                 <li>
@@ -330,7 +333,7 @@ form .signup-link a:hover{
         <div class="cardBox">
             
 
-            <button class="card" id="showPopupBtn" style = "background-color:#FF00FF;">
+            <button class="card" id="showPopupBtn" style = "background-color:red;">
                 <!-- <div> -->
                    
                     <!-- <div class="cardName"><button type="button" class='hero-btn red-btn' id="showPopupBtn" style = "color:red; ">Click to add a patient to the queue</button></div> -->
