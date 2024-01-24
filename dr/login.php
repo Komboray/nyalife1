@@ -29,13 +29,13 @@ session_start();
 
                     <div class="input-field">
                         <span></span>
-                        <input type="email" name="email" id="email" placeholder="Email">
+                        <input type="email" name="email" id="email" placeholder="Email" required>
                         <div class="error" ></div>
                     </div>
 
                     <div class="input-field">
                         <span></span>
-                        <input type="password" name="pass" id="pass" placeholder="Password">
+                        <input type="password" name="pass" id="pass" placeholder="Password" required>
                         <div class="error" ></div>
                     </div>
                     <p>Lost Password <a href="">Click Here!</a></p>
@@ -55,7 +55,7 @@ session_start();
     </div>
 </body>
 
-<script>
+<!-- <script>
 const form = document.getElementById('form');
 
 const email = document.getElementById('email');
@@ -121,7 +121,7 @@ const validateInputs = () => {
 };
 
    
-</script>
+</script> -->
 
 </html>
 <?php

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results</title>
+    <title>Medicine</title>
 </head>
 
 <!-- MATERIAL ICONS FROM GOOGLE --> <!-- MATERIAL ICONS FROM GOOGLE -->
@@ -23,32 +23,43 @@
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
         <div class="navigation">
-        <img src="nya-logo.jpg" height="100" width="290">
             <ul>
                 <!-- <li>
                     <a href="http://">
                         <span class="material-symbols-outlined">emergency</span>
-                        <span class="title">Dr's dashboard</span>
+                        <span class="title">Nurse's dashboard</span>
                     </a>
                 </li> -->
+                <img src="nya-logo.jpg" height="100" width="290">
 
                 <li>
-                    <a href="index.php">
+                    <a href="n-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
-                        <span class="title">Pharmacist's Dashboard</span>
+                        <span class="title">Nurse's Dashboard</span>
+                    </a>
+                </li>
+                
+                
+
+                <li>
+                    <a href="n-handle-patient.php">
+                        <span class="material-symbols-outlined">recent_patient</span>
+                        <span class="title">Handle Patient</span>
                     </a>
                 </li>
 
+
                 <li>
-                    <a href="appointments.php">
-                        <span class="material-symbols-outlined">bookmark</span>
+                    <a href="n-medicine.php">
+                        <span class="material-symbols-outlined">book_online</span>
                         <span class="title">Medicine</span>
                     </a>
                 </li>
 
+
                 <li>
-                    <a href="results.php">
-                        <span class="material-symbols-outlined">glucose</span>
+                    <a href="n-results.php">
+                        <span class="material-symbols-outlined">book_online</span>
                         <span class="title">Results</span>
                     </a>
                 </li>
@@ -56,7 +67,7 @@
                 
 
                 <li>
-                    <a href="chat.php">
+                    <a href="n-chat.php">
                         <span class="material-symbols-outlined">forum</span>
                         <span class="title">Chat</span>
                     </a>
@@ -68,6 +79,7 @@
                         <span class="title">Log out</span>
                     </a>
                 </li>
+
 
                 
             </ul>
@@ -153,7 +165,7 @@
 
             <div class="recentOrders">
                 <div class="cardHeader">
-                    <h2>Recent Results</h2>
+                    <h2>Administer Medicine</h2>
                     <button type="button" class="btn"><a href="http://" style="text-decoration: none;">View all</a></button>
                 </div>
     

@@ -28,7 +28,7 @@ include("database/connect.php");
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
         <div class="navigation">
-        <img src="nya-logo.jpg" height="70" width="290">
+        
             <ul>
                 <!-- <li>
                     <a href="http://">
@@ -36,32 +36,40 @@ include("database/connect.php");
                         <span class="title">Nurse's dashboard</span>
                     </a>
                 </li> -->
+                <img src="nya-logo.jpg" height="100" width="290">
 
                 <li>
-                    <a href="index.php">
+                    <a href="n-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="title">Nurse's Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="appointments.php">
+                    <a href="n-medicine.php">
                         <span class="material-symbols-outlined">bookmark</span>
+                        <span class="title">Handle patient</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="n-medicine.php">
+                        <span class="material-symbols-outlined">book_online</span>
                         <span class="title">Medicine</span>
                     </a>
                 </li>
 
+
                 <li>
-                    <a href="results.php">
-                        <span class="material-symbols-outlined">glucose</span>
+                    <a href="n-results.php">
+                        <span class="material-symbols-outlined">book_online</span>
                         <span class="title">Results</span>
                     </a>
                 </li>
-
                 
 
                 <li>
-                    <a href="chat.php">
+                    <a href="n-chat.php">
                         <span class="material-symbols-outlined">forum</span>
                         <span class="title">Chat</span>
                     </a>

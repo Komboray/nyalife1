@@ -195,10 +195,10 @@ form .signup-link a:hover{
             <div class="text">Add patient details</div>
             <form id="form" action = "<?php htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
 
-              <div class="data">
+              <!-- <div class="data">
                 <label for="username">Username:</label>
                 <input id="username" name="username" type="text" required>
-              </div>
+              </div> -->
 
               <div class="data">
                 <label for="email">Email:</label>
@@ -207,7 +207,7 @@ form .signup-link a:hover{
 
               <div class="data">
                     <select name= "rooms" id="optionsList">
-                        <option value="Triage">Triage</option>
+                        <!-- <option value="Triage">Triage</option> -->
                         <option value="Dr office">Dr office</option>
                         <option value="Lab">Lab</option>
                         <!-- Add more options as needed -->
@@ -218,7 +218,7 @@ form .signup-link a:hover{
 
               <div class="btn">
                 <!-- <div class = "inner"></div> -->
-                <button type = "submit" name = "submit"  >SEND TO TRIAGE</button><br>
+                <button type = "submit" name = "submit"  >SEND TO NEXT STAGE</button><br>
                 
               </div>
             </form>
@@ -251,6 +251,7 @@ form .signup-link a:hover{
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
         <div class="navigation">
+        <img src="images/nya-logo.jpg" height="50" width="250">
             <ul>
                 <!-- <li>
                     <a href="http://">
@@ -262,32 +263,38 @@ form .signup-link a:hover{
                 <img src="nya-logo.jpg" height="100" width="290">
 
                 <li>
-                    <a href="r-index.php">
+                    <a href="n-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
-                        <span class="title">Receptionist's Dashboard</span>
+                        <span class="title">Nurse's Dashboard</span>
                     </a>
                 </li>
 
-                
 
                 <li>
-                    <a href="r-index.php">
+                    <a href="n-handle-patient.php">
                         <span class="material-symbols-outlined">recent_patient</span>
                         <span class="title">Handle Patient</span>
                     </a>
                 </li>
 
+                <li>
+                    <a href="n-medicine.php">
+                        <span class="material-symbols-outlined">book_online</span>
+                        <span class="title">Medicine</span>
+                    </a>
+                </li>
+
 
                 <li>
-                    <a href="r-appointments.php">
+                    <a href="n-results.php">
                         <span class="material-symbols-outlined">book_online</span>
-                        <span class="title">Appointments</span>
+                        <span class="title">Results</span>
                     </a>
                 </li>
                 
 
                 <li>
-                    <a href="r-chat.php">
+                    <a href="n-chat.php">
                         <span class="material-symbols-outlined">forum</span>
                         <span class="title">Chat</span>
                     </a>

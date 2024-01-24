@@ -239,7 +239,7 @@ require_once("Classes/dateRange.php");
                 </div>
 
                 <table>
-                    <tr>
+                    
                         <!-- <td width="60px">
                             <div class="imgBx"><img src="" alt="" srcset=""></div>
                         </td> -->
@@ -290,9 +290,11 @@ require_once("Classes/dateRange.php");
                                     while($row = mysqli_fetch_assoc($res)){
                                         // echo $row["date"] ."<br>";
 
-                                        echo "<td>
+                                        echo "<tr>
+                                        <td>
                                         <h4>{$row["date"]} <br> <span>Italy</span></h4>
-                                    </td>";
+                                    </td>
+                                    </tr>";
                                         // $dates = $row["date"+++];
                                         // foreach ($dates as $c){
                                         //     echo $c ."<br>";
@@ -303,7 +305,7 @@ require_once("Classes/dateRange.php");
                             }
                         ?>
 
-                    </tr>
+                    
 
                     <!-- <tr>
                         <td width="60px">
