@@ -272,12 +272,15 @@ if($result){
                         
             </div>
 
-            <div class="search">
-                <label for="search">
-                    
-                    <input type="search" name="search" id="search" value="Search here">
-                </label>
-            </div>
+            <form action="search.php" method="get">
+                <div class="search">
+                    <label for="search">
+                        
+                        <input type="search" name="search" id="search" value="Search here">
+                        <!-- <input type="submit" value="Search"> -->
+                    </label>
+                </div>
+            </form>
             
             <!-- <div class="user">
                 <img src="" alt="" >

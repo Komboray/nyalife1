@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results</title>
+    <title>Medicine</title>
 </head>
 
 <!-- MATERIAL ICONS FROM GOOGLE --> <!-- MATERIAL ICONS FROM GOOGLE -->
@@ -24,14 +24,13 @@
     <div class="container">
         <div class="navigation">
             <ul>
-            <img src="nya-logo.jpg" height="100" width="290">
-
                 <!-- <li>
                     <a href="http://">
                         <span class="material-symbols-outlined">emergency</span>
-                        <span class="title">Dr's dashboard</span>
+                        <span class="title">Nurse's dashboard</span>
                     </a>
                 </li> -->
+                <img src="nya-logo.jpg" height="100" width="290">
 
                 <li>
                     <a href="index.php">
@@ -39,31 +38,28 @@
                         <span class="title">Dr's Dashboard</span>
                     </a>
                 </li>
+                
+                
 
                 <li>
                     <a href="handle-patient.php">
-                        <span class="material-symbols-outlined">bookmark</span>
+                        <span class="material-symbols-outlined">recent_patient</span>
                         <span class="title">Handle Patient</span>
                     </a>
                 </li>
 
-                <!-- <li>
-                    <a href="appointments.php">
-                        <span class="material-symbols-outlined">bookmark</span>
-                        <span class="title">Medicine</span>
-                    </a>
-                </li> -->
 
                 <li>
                     <a href="medicine.php">
-                        <span class="material-symbols-outlined">bookmark</span>
+                        <span class="material-symbols-outlined">book_online</span>
                         <span class="title">Medicine</span>
                     </a>
                 </li>
 
+
                 <li>
                     <a href="results.php">
-                        <span class="material-symbols-outlined">glucose</span>
+                        <span class="material-symbols-outlined">book_online</span>
                         <span class="title">Results</span>
                     </a>
                 </li>
@@ -83,6 +79,7 @@
                         <span class="title">Log out</span>
                     </a>
                 </li>
+
 
                 
             </ul>
@@ -168,7 +165,7 @@
 
             <div class="recentOrders">
                 <div class="cardHeader">
-                    <h2>Recent Results</h2>
+                    <h2>Administer Medicine</h2>
                     <button type="button" class="btn"><a href="http://" style="text-decoration: none;">View all</a></button>
                 </div>
     
@@ -268,6 +265,18 @@
 
         
     </div>
+<script>
+    
+    // Menu toggle
+    let toggle = document.querySelector(".toggle");
+    let nav = document.querySelector(".navigation");
+    let main = document.querySelector(".main");
+    
+    toggle.onclick = function(){
+        nav.classList.toggle("active");
+        main.classList.toggle("active");
+    }
+</script>
 </body>
 <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS -->
 
