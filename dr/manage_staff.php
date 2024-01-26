@@ -90,10 +90,18 @@ button[type="submit"] {
     margin-right: 5px;
 }
 
-.edit-button:hover, .view-button:hover, .delete-button:hover {
-    background-color: #2980b9;
-}
-
+.edit-button, .view-button, .delete-button {
+            background-color: #008CBA;
+            color: white;
+            padding: 5px 8px;
+            text-decoration: none;
+            border-radius: 3px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+.delete-button {
+            background-color: #f44336;
+        }
         </style>
     
 </head>
