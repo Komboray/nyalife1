@@ -6,78 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
      
-    <style>
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-#controls {
-    margin: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-select, input {
-    margin-right: 10px;
-    padding: 8px;
-}
-
-button {
-    padding: 8px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#staff-data-container {
-    margin: 20px;
-    overflow-x: auto; /* Enable horizontal scrolling when needed */
-}
-
-.staff-table {
-    border-collapse: collapse;
-    max-width: 100%; /* Make the table responsive */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.staff-table th, .staff-table td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 12px;
-}
-
-.staff-table th {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.staff-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.staff-table i {
-    cursor: pointer;
-    margin: 0 5px;
-    font-size: 18px;
-}
-
-.staff-table i:hover {
-    color: #4CAF50;
-}
-
-
-        </style>
+  
     
     
 </head>
@@ -173,25 +102,9 @@ button:hover {
 
         </div>
        
-        <body>
 
-<div id="controls">
-    <form method="GET" action="">
-        <select name="recordsPerPage" onchange="this.form.submit()">
-            <option value="10" <?php echo isset($_GET['recordsPerPage']) && $_GET['recordsPerPage'] == 10 ? 'selected' : ''; ?>>10</option>
-            <option value="20" <?php echo isset($_GET['recordsPerPage']) && $_GET['recordsPerPage'] == 20 ? 'selected' : ''; ?>>20</option>
-            <option value="30" <?php echo isset($_GET['recordsPerPage']) && $_GET['recordsPerPage'] == 30 ? 'selected' : ''; ?>>30</option>
-        </select>
-        <input type="text" name="search" placeholder="Search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
-    </form>
-    <a href="add_staff.php">Add Staff</a>
-</div>
-
-<div id="staff-data-container">
-    <?php include 'get_staff_data.php'; ?>
-</div>
-
-</body>
+        
+        
             </div>
 
     

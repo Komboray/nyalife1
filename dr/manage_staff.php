@@ -5,16 +5,18 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-     <style>
-    body {
+     
+  
+    <style>
+        body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
 
-.view-container {
-    max-width: 600px;
+.table-container {
+    max-width: 800px;
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -23,48 +25,76 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    text-align: center;
-    color: #333;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.staff-info {
-    margin-top: 20px;
-}
-
-label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-}
-
-span {
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.back-button {
-    display: block;
+.add-button {
     background-color: #3498db;
     color: #fff;
     padding: 8px 12px;
     text-decoration: none;
     border-radius: 5px;
-    text-align: center;
-    margin-top: 20px;
 }
 
-.back-button:hover {
+.search-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button[type="submit"] {
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.staff-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.staff-table th, .staff-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.staff-table th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.staff-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.edit-button, .view-button, .delete-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.edit-button:hover, .view-button:hover, .delete-button:hover {
     background-color: #2980b9;
 }
-</style>
-    
+
+        </style>
     
 </head>
 
@@ -153,12 +183,12 @@ img {
                 </label>
             </div>
             
-            <!-- <div class="user">
-                <img src="" alt="" >
-            </div> -->
+        
 
         </div>
-        <?php
+       <!------ Main page Content goes here-->
+
+       <?php
 // Replace these values with your actual database connection details
 $servername = "localhost";
 $username = "root";
@@ -173,92 +203,70 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get the staff ID from the URL parameter
-$id = $_GET['id'] ?? '';
+// Search functionality
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$searchCondition = !empty($search) ? "WHERE first_name LIKE '%$search%' OR Designation LIKE '%$search%' OR Department LIKE '%$search%' OR Email LIKE '%$search%' OR Phone LIKE '%$search%'" : '';
 
-// Fetch staff record from the database for the selected ID
-$sql = "SELECT * FROM Staff WHERE ID = $id";
+// Fetch staff records from the database
+$sql = "SELECT ID, first_name, Designation, Department, Email, Phone FROM Staff $searchCondition";
 $result = $conn->query($sql);
 
 // Close connection
 $conn->close();
-
-// Check if the record exists
-if ($result->num_rows == 0) {
-    // Redirect to manage_staff.php if the record doesn't exist
-    header("Location: manage_staff.php");
-    exit();
-}
-
-// Get the staff details
-$row = $result->fetch_assoc();
-$title = $row['title'];
-$first_name = $row['first_name'];
-$last_name = $row['last_name'];
-$email = $row['email'];
-$phone = $row['phone'];
-$dob = $row['dob'];
-$gender = $row['gender'];
-$designation = $row['designation'];
-$department = $row['department'];
-$role = $row['role'];
-$address = $row['address'];
-$national_id = $row['national_id'];
-$profile_picture = $row['profile_picture'];
-$password = $row['password'];
 ?>
-        
-<div class="view-container">
-    <h2>View Staff Information</h2>
 
-    <div class="staff-info">
-        <label>Title:</label>
-        <span><?= $title ?></span>
 
-        <label>First Name:</label>
-        <span><?= $first_name ?></span>
 
-        <label>Last Name:</label>
-        <span><?= $last_name ?></span>
-
-        <label>Email:</label>
-        <span><?= $email ?></span>
-
-        <label>Phone:</label>
-        <span><?= $phone ?></span>
-
-        <label>Date of Birth:</label>
-        <span><?= $dob ?></span>
-
-        <label>Gender:</label>
-        <span><?= $gender ?></span>
-
-        <label>Designation:</label>
-        <span><?= $designation ?></span>
-
-        <label>Department:</label>
-        <span><?= $department ?></span>
-
-        <label>Role:</label>
-        <span><?= $role ?></span>
-
-        <label>Address:</label>
-        <span><?= $address ?></span>
-
-        <label>National ID:</label>
-        <span><?= $national_id ?></span>
-
-        <label>Profile Picture:</label>
-        <img src="<?= $profile_picture ?>" alt="Profile Picture">
-
-        <!-- Note: Displaying password for viewing purposes only -->
-        <label>Password:</label>
-        <span><?= $password ?></span>
+<div class="table-container">
+    <div class="header">
+        <a href="add_staff.php" class="add-button">Add New Staff</a>
+        <form action="manage_staff.php" method="get" class="search-form">
+            <input type="text" name="search" placeholder="Search..." value="<?= htmlspecialchars($search) ?>">
+            <button type="submit">Search</button>
+        </form>
     </div>
 
-    <a href="manage_staff.php" class="back-button">Back to Staff List</a>
+    <table class="staff-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+        <?php
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td>{$row['ID']}</td>
+                        <td>{$row['first_name']}</td>
+                        <td>{$row['Designation']}</td>
+                        <td>{$row['Department']}</td>
+                        <td>{$row['Email']}</td>
+                        <td>{$row['Phone']}</td>
+                        <td>
+                        <button onclick=\"location.href='update_staff.php?id={$row['ID']}'\" class='edit-button'>Edit</button>
+                            <button onclick=\"location.href='view_staff.php?id={$row['ID']}'\" class='view-button'>View</button>
+                        <button class='delete-button' onclick='confirmDelete({$row['ID']})'>Delete</button>
+        
+                        </td>
+                      </tr>";
+            }
+        } else {
+            echo "<tr><td colspan='7'>No records found.</td></tr>";
+        }
+        ?>
+    </table>
 </div>
 
+
+
+
+
+       <!--- End Main page Content------>
+        
             </div>
 
     
@@ -267,6 +275,15 @@ $password = $row['password'];
         
     </div>
 </body>
+<script>
+function confirmDelete(id) {
+    var confirmDelete = confirm("Are you sure you want to delete this staff record?");
+    
+    if (confirmDelete) {
+        window.location.href = 'delete_staff.php?id=' + id;
+    }
+}
+</script>
 <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS -->
 
 <script src="js/main.js"></script>
