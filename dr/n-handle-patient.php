@@ -51,7 +51,7 @@ include("database/connect.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reception</title>
+    <title>Triage</title>
     <style>
         /* this is the css for the pop up form */
         .container form{
@@ -148,17 +148,17 @@ form .signup-link a:hover{
     color: red;
  }
 
-      /* THIS IS THE CSS FOR THE FORM USED TO EDIT USER DETAILS ON THE SPAN*/
+      /* THIS IS THE CSS FOR THE FORM USED TO VIEW USER DETAILS ON A POP UP CONTAINER*/
       /* Style for the popup form container */
     .popup-form-container {
       height: 300px;
-      width: 200px; 
+      width: 700px; 
       display: none;
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: #f1f1f1;
+      background-color: #1d1d2c;
       padding: 20px;
       border: 1px solid #ccc;
       z-index: 1;
@@ -169,6 +169,45 @@ form .signup-link a:hover{
       cursor: pointer;
       text-decoration: underline;
       color: blue;
+    }
+    /* Style for the pop-up */
+    #popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    /* Style for the close button */
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 100px;
+      background-color:red;
+      
+    }
+    @media screen and(max-width: 660px) {
+        .popup-form-container {
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align:center;
+            width: 100%; 
+            
+            top: 50%;
+            /* left: 50%; */
+            transform: translate(-50%, -50%);
+            background-color: #f1f1f1;
+            
+            
+        }
     }
     </style>
 </head>
@@ -185,63 +224,14 @@ form .signup-link a:hover{
 <link rel="stylesheet" href="css/handle-pat.css">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
+<!-- THIS BELOW IS THE LINK THAT ALLOWS FOR THE AJAX TO BE CALLED JQUERY CDN -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <body>
 
-    <div id="popupForm" class="popup">
-        <div class="popup-content">
-            <span class="close" id="closeBtn">&times;</span>
-            <!-- WE HAVE ADDED THE MODIFIED FIEL HERE -->
-            <div class="text">Add patient details</div>
-            <form id="form" action = "<?php htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
 
-              <!-- <div class="data">
-                <label for="username">Username:</label>
-                <input id="username" name="username" type="text" required>
-              </div> -->
-
-              <div class="data">
-                <label for="email">Email:</label>
-                <input id="email" name="email" type="email" required>
-              </div>
-
-              <div class="data">
-                    <select name= "rooms" id="optionsList">
-                        <!-- <option value="Triage">Triage</option> -->
-                        <option value="Dr office">Dr office</option>
-                        <option value="Lab">Lab</option>
-                        <!-- Add more options as needed -->
-                    </select>
-              </div>
-
-              
-
-              <div class="btn">
-                <!-- <div class = "inner"></div> -->
-                <button type = "submit" name = "submit"  >SEND TO NEXT STAGE</button><br>
-                
-              </div>
-            </form>
-
-            <!-- END OF THE MODIFIED FORM -->
-        </div>
-    </div>
-
-    <!-- THIS IS THE FORM THAT EDITS USER DETAILS -->
-
-    <div id="popupFormEdit" class="popup-form-container">
-        <form action = "edit-from.php" method = "POST">
-            <label for="name">Enter the email you want to update:</label>
-            <input type="email" id="email-compared" name="email-compared" placeholder = "Confrim from recent patients" required><br>
-
-            <label for="name">Name:</label>
-            <input type="text" id="name-edit" name="name-edit" placeholder = "Enter new name" required><br>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email-edit" name="email-edit" placeholder = "Enter new email" required><br>
-            <br>
-            <button type="submit" name="Send-update">Submit the Edit</button>
-        </form>
+    <div id="popupFormEdit" class=" popup-form-container" style = "background-color: #fff; padding: 20px 16px;">
+       <div class ="view_user_data">
+        </div>  
         <br>
         <span onclick="closePopupForm()">Close</span>
     </div>
@@ -339,18 +329,15 @@ form .signup-link a:hover{
         <div class="cardBox">
             
 
-            <button class="card" id="showPopupBtn" style = "background-color:red;">
-                <!-- <div> -->
-                   
-                    <!-- <div class="cardName"><button type="button" class='hero-btn red-btn' id="showPopupBtn" style = "color:red; ">Click to add a patient to the queue</button></div> -->
-                <!-- </div> -->
+            <!-- <button class="card" id="showPopupBtn" style = "background-color:red;">
+                
                 <div class="cardName" style = "color:white">Click to add a patient to the queue</div>
                 
                 <div class="iconBx">
                     <span class="material-symbols-outlined" style = "color:white">recent_patient</span>
                 
                 </div>
-            </button>
+            </button> -->
 
             
 
@@ -447,12 +434,21 @@ form .signup-link a:hover{
 
                         if($num > 0){
                             while($row = mysqli_fetch_assoc($res)){
-                                echo "
-                                <table>
-                                <tr>                
+                                // <table>
+                                // <tr>                
             
-                                    <td>
-                                        <h4>{$row["username"]} <br> <span>{$row["email"]}</span></h4>
+                                //     <td class='popup-trigger' onclick='openPopupForm()' style = 'text-decoration:none;'>
+                                //         <h4>{$row["username"]} <br> <span>{$row["email"]}</span></h4>
+                                //     </td>
+                                // </tr>
+            
+                                // </table>
+                                echo "
+                                <table id='userTable'>
+                                <tr class='clickable-row'>                
+            
+                                    <td class='popup-trigger view_data' onclick='openPopupForm()' style = 'text-decoration:none;'>
+                                        <h4 class='user_id'>{$row["id"]} <br>{$row["username"]} <br> <span>{$row["email"]}</span></h4>
                                     </td>
                                 </tr>
             
@@ -491,6 +487,33 @@ form .signup-link a:hover{
         nav.classList.toggle("active");
         main.classList.toggle("active");
     }
+
+    $(document).ready(function () {
+
+$('.view_data').click(function (e){
+    e.preventDefault();
+
+    // console.log('hello');
+
+    var user_id = $(this).closest('td').find('.user_id').text();
+    // console.log(user_id);
+
+    $.ajax({
+        method: "POST",
+        url: "code.php",
+        data: {
+            'click_view_btn': true,
+            'user_id':user_id,
+        },
+        success: function (response){
+            console.log(response);
+
+            $('.view_user_data').html(response);
+        }
+    });
+});
+});
+
 </script>
 </body>
 <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS --> <!-- THE DIFF SCRITS -->
@@ -538,6 +561,31 @@ const selectOptionInput = document.getElementById('selectOption');
     var popupForm = document.getElementById('popupFormEdit');
     popupForm.style.display = 'none';
   }
+
+  // Function to display the pop-up with data
+  function showPopup(username, email) {
+      document.getElementById("popupUsername").textContent = username;
+      document.getElementById("popupEmail").textContent = email;
+      document.getElementById("popup").style.display = "block";
+    }
+
+    // Function to close the pop-up
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // Add click event listeners to table rows
+    document.addEventListener('DOMContentLoaded', function () {
+      const rows = document.querySelectorAll('.clickable-row');
+
+      rows.forEach(row => {
+        row.addEventListener('click', function () {
+          const username = this.querySelector('h4').textContent;
+          const email = this.querySelector('span').textContent;
+          showPopup(username, email);
+        });
+      });
+    });
 </script>
 <script src="js/main.js"></script>
 </html>
