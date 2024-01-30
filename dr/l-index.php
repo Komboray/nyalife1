@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="nya-logo.jpg">
 </head>
 <style>
 
@@ -266,7 +267,7 @@ nav .fa{
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
         <div class="navigation">
-        <img src="nya-logo.jpg" height="100" width="290">
+        
             <ul>
                 <!-- <li>
                     <a href="http://">
@@ -274,7 +275,7 @@ nav .fa{
                         <span class="title">Lab's dashboard</span>
                     </a>
                 </li> -->
-
+                <img src="nya-logo.jpg" height="100" width="290">
                 <li>
                     <a href="l-index.php">
                         <span class="material-symbols-outlined">dashboard</span>
@@ -335,8 +336,8 @@ nav .fa{
         </div>
         <!-- CARDS CARDS CARDS CARDS CARDS CARDS -->
 
-        <div class="cardBox" id = "myImg">
-            <button type="button" id = "myButton">
+        <div class="cardBox" >
+            
                 <div class="card">
                     <div>
                         <div class="numbers">11</div>
@@ -348,9 +349,9 @@ nav .fa{
                     
                     </div>
                 </div>
-            </button>
+            
 
-            <button type="button">
+            
                 <div class="card">
                     <div>
                         <div class="numbers">15</div>
@@ -362,9 +363,9 @@ nav .fa{
                     
                     </div>
                 </div>
-            </button>
+            
 
-            <button>
+            
                 <div class="card">
                     <div>
                         <div class="numbers">15401</div>
@@ -376,7 +377,7 @@ nav .fa{
                     
                     </div>
                 </div>
-            </button>
+            
 
             <!-- <div class="card">
                 <div>

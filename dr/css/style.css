@@ -267,6 +267,53 @@ body{
 .cardBox .card:hover .iconBx{
     color: var(--white);
 }
+/* transactions page */
+.form{
+    padding: 30px 40px;
+}
+
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label{
+    display: inline-block;
+    margin-bottom: 5px;
+    color:blue;
+}
+
+.form-control input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-control input:focus{
+    outline: 0;
+    border-color: #777;
+}
+
+
+.form button{
+    background-color: #8e44ad;
+    border: 2px solid #8e44ad;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    
+    width: 100%;
+}   
+
 
 
 /* Order Details List */
@@ -546,6 +593,7 @@ body{
 }
 
 
+
 /* design of the button with a link */
 .hero-btn-bal{
     display: inline;
@@ -588,8 +636,8 @@ nav .fa{
 .buttons{
     align-items: center;
  }
-
-
+  
+  
 
                                       /* THIS IS THE CSS FOR THE TABLE */
 

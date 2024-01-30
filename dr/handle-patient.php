@@ -6,24 +6,24 @@ include("database/connect.php");
 
 
     if(isset($_POST["submit"])){
-        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+        
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
 
         $rooms = $_POST["rooms"];
         
-            echo $rooms;
-        
-            
+            // echo $rooms;  
 
-        $sql = "INSERT INTO `patients` (email, rooms, username, date)
-                VALUES ('$email' , '$rooms', '$username', CURRENT_DATE)";
+        $sql = "UPDATE `patients`
+                SET `rooms` = '$rooms'  
+                WHERE `email` = '$email'
+                ";
 
         try{
             $response = mysqli_query($conn, $sql);
             if($response){
 
-                echo "Details have been sent to the database!";
-                header("Location: r-handle-patient.php");
+                echo "Your update was successful!";
+                header("Location: handle-patient.php");
                 exit();
                 
             }else{
@@ -33,7 +33,7 @@ include("database/connect.php");
         }catch(mysqli_sql_exception $e){
             if ($e->getCode() == 1062) { // 1062 is the MySQL error code for duplicate entry
                 // Handle duplicate entry error
-                echo "The name 'peter drury' already exists.";
+                echo "Already exists.";
             } else {
                 // Handle other database errors
                 echo "Database error: " . $e->getMessage();
@@ -51,7 +51,8 @@ include("database/connect.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reception</title>
+    <title>Doctor</title>
+    <link rel="icon" type="image/x-icon" href="nya-logo.jpg">
     <style>
         /* this is the css for the pop up form */
         .container form{
@@ -192,7 +193,7 @@ form .signup-link a:hover{
         <div class="popup-content">
             <span class="close" id="closeBtn">&times;</span>
             <!-- WE HAVE ADDED THE MODIFIED FIEL HERE -->
-            <div class="text">Add patient details</div>
+            <div class="text">Enter the patient's email</div>
             <form id="form" action = "<?php htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
 
               <!-- <div class="data">
@@ -208,7 +209,7 @@ form .signup-link a:hover{
               <div class="data">
                     <select name= "rooms" id="optionsList">
                         <!-- <option value="Triage">Triage</option> -->
-                        <option value="Dr office">Dr office</option>
+                        <!-- <option value="Dr office">Dr office</option> -->
                         <option value="Lab">Lab</option>
                         <!-- Add more options as needed -->
                     </select>
@@ -263,7 +264,7 @@ form .signup-link a:hover{
                 <img src="nya-logo.jpg" height="100" width="290">
 
                 <li>
-                    <a href="n-index.php">
+                    <a href="index.php">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="title">Dr's Dashboard</span>
                     </a>
@@ -344,7 +345,7 @@ form .signup-link a:hover{
                    
                     <!-- <div class="cardName"><button type="button" class='hero-btn red-btn' id="showPopupBtn" style = "color:red; ">Click to add a patient to the queue</button></div> -->
                 <!-- </div> -->
-                <div class="cardName" style = "color:white">Click to add a patient to the queue</div>
+                <div class="cardName" style = "color:white">Click to send patient to the lab</div>
                 
                 <div class="iconBx">
                     <span class="material-symbols-outlined" style = "color:white">recent_patient</span>

@@ -46,7 +46,7 @@ include("database/connect.php");
                 </li>
 
                 <li>
-                    <a href="n-medicine.php">
+                    <a href="n-handle-patient.php">
                         <span class="material-symbols-outlined">bookmark</span>
                         <span class="title">Handle patient</span>
                     </a>

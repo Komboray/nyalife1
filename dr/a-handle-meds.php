@@ -23,7 +23,7 @@
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
         <div class="navigation">
-        <img src="nya-logo.jpg" height="70" width="290">
+        <img src="nya-logo.jpg" height="100" width="290">
             <ul>
                 <!-- <li>
                     <a href="http://">
@@ -104,7 +104,7 @@
         </div>
         <!-- CARDS CARDS CARDS CARDS CARDS CARDS -->
 
-        <div class="cardBox">
+        <!-- <div class="cardBox">
             <div class="card">
                 <div>
                     <div class="numbers">11</div>
@@ -139,7 +139,7 @@
                     <span class="material-symbols-outlined">wifi_calling</span>
                 
                 </div>
-            </div>
+            </div> -->
 
             <!-- <div class="card">
                 <div>
@@ -153,10 +153,10 @@
                 </div>
             </div> -->
 
-        </div>
+        <!-- </div> -->
 
         <!-- ORDER DETAILS LIST -->
-        <div class="details">
+        <!-- <div class="details">
 
             <div class="recentOrders">
                 <div class="cardHeader">
@@ -204,7 +204,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
 
             <!-- NEW CUSTOMERS -->
             <div class="recentCustomers">

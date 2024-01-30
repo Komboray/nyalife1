@@ -8,6 +8,7 @@ require_once("Classes/dateRange.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointments</title>
+    <link rel="icon" type="image/x-icon" href="nya-logo.jpg">
 </head>
 
 <!-- MATERIAL ICONS FROM GOOGLE --> <!-- MATERIAL ICONS FROM GOOGLE -->
@@ -292,7 +293,7 @@ require_once("Classes/dateRange.php");
 
                                         echo "<tr>
                                         <td>
-                                        <h4>{$row["date"]} <br> <span>Italy</span></h4>
+                                        <h4>{$row["date"]} <br> <span></span></h4>
                                     </td>
                                     </tr>";
                                         // $dates = $row["date"+++];

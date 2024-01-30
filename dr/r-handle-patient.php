@@ -52,6 +52,7 @@ include("database/connect.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reception</title>
+    <link rel="icon" type="image/x-icon" href="nya-logo.jpg">
     <style>
         /* this is the css for the pop up form */
         .container form{
@@ -381,7 +382,8 @@ form .signup-link a:hover{
                             <td>Stage</td>
                             <td>Visit</td>
                             <td>Status</td>
-                            <a href="http://"><td></td></a>
+                            <td>Edit Details</td>
+                            <!-- <a href="http://"><td></td></a> -->
                             
                         </tr>
                     </thead>

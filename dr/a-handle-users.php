@@ -24,7 +24,7 @@
     <div class="container">
         <div class="navigation">
             <ul>
-            <img src="nya-logo.jpg" height="70" width="290">
+            <img src="nya-logo.jpg" height="100" width="290">
                 <!-- <li>
                     <a href="http://">
                         <span class="material-symbols-outlined">emergency</span>

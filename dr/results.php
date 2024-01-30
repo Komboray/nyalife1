@@ -110,10 +110,12 @@
             </div> -->
 
         </div>
-        <!-- CARDS CARDS CARDS CARDS CARDS CARDS
+        <!-- CARDS CARDS CARDS CARDS CARDS CARDS -->
+        
 
-        <div class="cardBox">
-            <div class="card">
+        
+
+            <!-- <div class="card">
                 <div>
                     <div class="numbers">15401</div>
                     <div class="cardName">Daily News</div>
@@ -147,28 +149,16 @@
                     <span class="material-symbols-outlined">menu</span>
                 
                 </div>
-            </div>
+            </div> -->
 
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
-
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
-
-        </div> -->
+        <!-- </div> -->
 
         <!-- ORDER DETAILS LIST -->
         <div class="details">
 
             <div class="recentOrders">
                 <div class="cardHeader">
-                    <h2>Recent Results</h2>
+                    <h2>Lab Results</h2>
                     <button type="button" class="btn"><a href="http://" style="text-decoration: none;">View all</a></button>
                 </div>
     

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine</title>
+    <title>Nurse's Medicine</title>
+    <link rel="icon" type="image/x-icon" href="nya-logo.jpg">
 </head>
 
 <!-- MATERIAL ICONS FROM GOOGLE --> <!-- MATERIAL ICONS FROM GOOGLE -->
@@ -96,10 +97,13 @@
             </div>
 
             <div class="search">
-                <label for="search">
+                <form action="database/search_results.php" method="post">
+                    <label for="search">
+                        
+                        <input type="search" name="search" id="search" value="Search here"><button type="submitSearch">Search</button>
+                    </label>
                     
-                    <input type="search" name="search" id="search" value="Search here">
-                </label>
+                </form>
             </div>
             
             <!-- <div class="user">
@@ -109,106 +113,87 @@
         </div>
         <!-- CARDS CARDS CARDS CARDS CARDS CARDS
 
-        <div class="cardBox">
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
+    
 
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
-
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
-
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
-
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
-
-        </div> -->
-
-        <!-- ORDER DETAILS LIST -->
+        <-- ORDER DETAILS LIST -->
         <div class="details">
 
             <div class="recentOrders">
                 <div class="cardHeader">
                     <h2>Administer Medicine</h2>
-                    <button type="button" class="btn"><a href="http://" style="text-decoration: none;">View all</a></button>
+                    
                 </div>
+                <?php
+                include("database/connect.php");
+                $sql =  "SELECT * 
+                        FROM `medicines`";
+                $response = mysqli_query($conn, $sql);
+                    if($response){
+                        $num = mysqli_num_rows($response);
+                        if($num>0){
+                            while($row = mysqli_fetch_assoc($response)){
+                                echo"
+                                <table>
+                                <thead>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>Generic</td>
+                                        <td>Brand</td>
+                                        <td>Dosage</td>
+                                        <td>Strength</td>
+                                        <td>Route of administration</td>
+                                        <td>Prescription Status</td>
+                                        <td>indications</td>
+                                        <td>contraindications</td>
+                                        <td>Side-effects</td>
+                                        <td>storage Conditions</td>
+                                        <td>expiry Date</td>
+                                        <td>manufacturer's Information</td>
+                                        <td>batch</td>
+                                        <td>national DrugCode</td>
+                                        <td>cost</td>
+                                        <td>Warning Precautions</td>
+                                        <td>interactions</td>
+                                    </tr>
+                                </thead>
+                    
+                                <tbody>
+                                    <tr>
+                                        <td>{$row["id"]}</td>
+                                        <td>{$row["name"]}</td>
+                                        <td>{$row["generic"]}</td>
+                                        <td>{$row["brand"]}</td>
+                                        <td>{$row["dosage"]}</td>
+                                        <td>{$row["strength"]}</td>
+                                        <td>{$row["routeOfAdmin"]}</td>
+                                        <td>{$row["prescriptionStatus"]}</td>
+                                        <td>{$row["indications"]}</td>
+                                        <td>{$row["contraindications"]}</td>
+                                        <td>{$row["sideEffects"]}</td>
+                                        <td>{$row["storageConditions"]}</td>
+                                        <td>{$row["expiryDate"]}</td>
+                                        <td>{$row["manufInformation"]}</td>
+                                        <td>{$row["batch"]}</td>
+                                        <td>{$row["nationalDrugCode"]}</td>
+                                        <td>{$row["cost"]}</td>
+                                        <td>{$row["warningPrecautions"]}</td>
+                                        <td>{$row["interactions"]}</td>
+                                        <td><a href='administerMeds.php'><span class='material-symbols-outlined' style='color:red;'>vaccines</span></a></td>
+                                        <td><span class='status pending'>Pending</span></td>
+                                    </tr>
+                    
+                                    
+                                </tbody>
+                            </table>
+                                ";
+                            }
+                        }else{
+                            echo "<h1 style = 'color:red;'>There is no medicine to be administered!</h1>";
+                    }
+                    }
+                ?>
     
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Name</td>
-                            <td>Price</td>
-                            <td>Payment</td>
-                            <td>Status</td>
-                        </tr>
-                    </thead>
-        
-                    <tbody>
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status delivered">delivered</span></td>
-                        </tr>
-        
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-        
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status return">Return</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status inProgress">In progress</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                
             </div>
 
             <!-- NEW CUSTOMERS -->

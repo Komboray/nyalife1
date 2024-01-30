@@ -1,9 +1,77 @@
+<?php
+
+// $_SESSION["username"];
+// $_SESSION["email"];
+include("database/connect.php");
+
+// $sql = "SELECT COUNT(*) 
+//         AS `total_users`
+//         FROM `appointments`";
+
+$sql = "SELECT * 
+        FROM `medicines`";
+$result = mysqli_query($conn, $sql);
+
+if($result){
+    $numMeds = mysqli_num_rows($result);
+
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicine</title>
+    <link rel="icon" type="image/x-icon" href="nya-logo.jpg">
+    <style>
+        /* transactions page */
+.form{
+    padding: 30px 40px;
+}
+
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label{
+    display: inline-block;
+    margin-bottom: 5px;
+    color:blue;
+}
+.form-control input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-control input:focus{
+    outline: 0;
+    border-color: #777;
+}
+
+
+.form button{
+    background-color: #8e44ad;
+    border: 2px solid #8e44ad;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    
+    width: 100%;
+}   
+    </style>
 </head>
 
 <!-- MATERIAL ICONS FROM GOOGLE --> <!-- MATERIAL ICONS FROM GOOGLE -->
@@ -107,10 +175,22 @@
             </div> -->
 
         </div>
-        <!-- CARDS CARDS CARDS CARDS CARDS CARDS
+        <!-- CARDS CARDS CARDS CARDS CARDS CARDS -->
 
         <div class="cardBox">
-            <div class="card">
+            <div class="card" style = "background-color:purple; text-decoration: none">
+                <div>
+                    <div class="numbers" style = "color:#fff"><?php echo "{$numMeds}" ?></div>
+                    <div class="cardName" style = "color:#fff">Number of medicines</div>
+                </div>
+
+                <div class="iconBx">
+                    <span class="material-symbols-outlined" style = "color:red">pill</span>
+                
+                </div>
+            </div>
+
+            <!-- <div class="card">
                 <div>
                     <div class="numbers">15401</div>
                     <div class="cardName">Daily News</div>
@@ -120,9 +200,9 @@
                     <span class="material-symbols-outlined">menu</span>
                 
                 </div>
-            </div>
+            </div> -->
 
-            <div class="card">
+            <!-- <div class="card">
                 <div>
                     <div class="numbers">15401</div>
                     <div class="cardName">Daily News</div>
@@ -132,9 +212,9 @@
                     <span class="material-symbols-outlined">menu</span>
                 
                 </div>
-            </div>
+            </div> -->
 
-            <div class="card">
+            <!-- <div class="card">
                 <div>
                     <div class="numbers">15401</div>
                     <div class="cardName">Daily News</div>
@@ -144,120 +224,178 @@
                     <span class="material-symbols-outlined">menu</span>
                 
                 </div>
-            </div>
+            </div> -->
 
-            <div class="card">
-                <div>
-                    <div class="numbers">15401</div>
-                    <div class="cardName">Daily News</div>
-                </div>
+        </div>
 
-                <div class="iconBx">
-                    <span class="material-symbols-outlined">menu</span>
-                
-                </div>
-            </div>
+        <?php
+        include("database/connect.php");
+        $sql = "SELECT *
+                FROM `medicines`";
+        $res = mysqli_query($conn, $sql);
+        if($res){
+            $num = mysqli_num_rows($res);
 
-        </div> -->
-
-        <!-- ORDER DETAILS LIST -->
-        <div class="details">
-
-            <div class="recentOrders">
-                <div class="cardHeader">
-                    <h2>Administer Medicine</h2>
-                    <button type="button" class="btn"><a href="http://" style="text-decoration: none;">View all</a></button>
-                </div>
-    
-                <table>
+            if($num>0){
+                while($row = mysqli_fetch_assoc($res)){
+                    echo "<table>
                     <thead>
                         <tr>
                             <td>Name</td>
-                            <td>Price</td>
-                            <td>Payment</td>
-                            <td>Status</td>
+                            <td>Generic</td>
+                            <td>Brand</td>
+                            <td>Dosage</td>
+                            <td>Strength</td>
+                            <td>Route of administration</td>
+                            <td>Prescription Status</td>
+                            <td>indications</td>
+                            <td>contraindications</td>
+                            <td>Side-effects</td>
+                            <td>storage Conditions</td>
+                            <td>expiry Date</td>
+                            <td>manufacturer's Information</td>
+                            <td>batch</td>
+                            <td>national DrugCode</td>
+                            <td>cost</td>
+                            <td>Warning Precautions</td>
+                            <td>interactions</td>
                         </tr>
                     </thead>
         
                     <tbody>
                         <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status delivered">delivered</span></td>
+                            <td>{$row["id"]}</td>
+                            <td>{$row["name"]}</td>
+                            <td>{$row["generic"]}</td>
+                            <td>{$row["brand"]}</td>
+                            <td>{$row["dosage"]}</td>
+                            <td>{$row["strength"]}</td>
+                            <td>{$row["routeOfAdmin"]}</td>
+                            <td>{$row["prescriptionStatus"]}</td>
+                            <td>{$row["indications"]}</td>
+                            <td>{$row["contraindications"]}</td>
+                            <td>{$row["sideEffects"]}</td>
+                            <td>{$row["storageConditions"]}</td>
+                            <td>{$row["expiryDate"]}</td>
+                            <td>{$row["manufInformation"]}</td>
+                            <td>{$row["batch"]}</td>
+                            <td>{$row["nationalDrugCode"]}</td>
+                            <td>{$row["cost"]}</td>
+                            <td>{$row["warningPrecautions"]}</td>
+                            <td>{$row["interactions"]}</td>
+                            <td><span class='status delivered'>delivered</span></td>
                         </tr>
         
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-        
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status return">Return</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Star Ref</td>
-                            <td>$1200</td>
-                            <td>Paid</td>
-                            <td><span class="status inProgress">In progress</span></td>
-                        </tr>
+                        
                     </tbody>
-                </table>
-            </div>
+                </table>";
+                }
+            }else{
+                echo "<h1 style='color:purple;text-align:center;'>You have no medicines in storage!</h1>
+                <h1 style='color:red;text-align:center;'>Add a medicine below</h1>
+        
 
-            <!-- NEW CUSTOMERS -->
-            <div class="recentCustomers">
-                <div class="cardHeader">
-                    <h2>Recent Medicines</h2>
+                <div class='contain'>
+                <div class='head'>
+                <h2 style='color:blue;text-align:center;'></h2>
                 </div>
+               <form action='database/meds.php' class='form' id = 'form' method = 'POST'>
+                 <div class='form-control'>
+                    <label for='name' >Name of medicine</label>
+                     <input type='text' name='name' id='name' required>
+                     <label for='name' >Generic</label>
+                     <input type='text' name='generic' id='generic' required>
+                     <label for='name' >brand</label>
+                     <input type='text' name='brand' id='brand' required>
+                     <label for='name' >dosage</label>
+                     <input type='text' name='dosage' id='dosage' required>
+                     <label for='name' >strength</label>
+                     <input type='text' name='strength' id='strength' required>
+                     <label for='name' >routeOfAdmin</label>
+                     <input type='text' name='routeOfAdmin' id='routeOfAdmin' required>
+                     <label for='name' >prescriptionStatus</label>
+                     <input type='text' name='prescriptionStatus' id='prescriptionStatus' required>
+                     <label for='name' >indications</label>
+                     <input type='text' name='indications' id='indications' required>
+                     <label for='name' >contraindications</label>
+                     <input type='text' name='contraindications' id='contraindications' required>
+                     <label for='name' >sideEffects</label>
+                     <input type='text' name='sideEffects' id='sideEffects' required>
+                     <label for='name' >storageConditions</label>
+                     <input type='text' name='storageConditions' id='storageConditionsname' required>
+                     <label for='name' >expiryDate	</label>
+                     <input type='text' name='expiryDate' id='expiryDate' required>
+                     <label for='name' >manufInformation</label>
+                     <input type='text' name='manufInformation' id='manufInformation' required>
+                     <label for='name' >batch</label>
+                     <input type='text' name='batch' id='batch' required>
+                     <label for='name' >nationalDrugCode</label>
+                     <input type='text' name='nationalDrugCode' id='nationalDrugCode' required>
+                     <label for='name' >cost</label>
+                     <input type='text' name='cost' id='cost' required>
+                     <label for='name' >warningPrecautions</label>
+                     <input type='text' name='warningPrecautions' id='warningPrecautions' required>
+                     <label for='name' >interactions</label>
+                     <input type='text' name='interactions' id='interactions' required>
+                     
+                     
+                      </div>
+        
+                     <button type ='submit' name= 'medsSubmit'> Submit</button>
+                      </form>
+                </div>
+        
+                
+                ";
+            }
+        }
+        ?>
+        
+        <div class="recentCustomers">
+                <div class="cardHeader">
+                    <h2>Recently added Medicines</h2>
+                </div>
+        
+            
+            <?php
+            include("database/connect.php");
+            $sql = "SELECT *
+                    FROM `medicines`
+                    ORDER BY `dateOfEntry`
+                    ASC";
+            $res = mysqli_query($conn, $sql);
+            if($res){
+                $num = mysqli_num_rows($res);
 
-                <table>
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="" alt="" srcset=""></div>
-                        </td>
+                if($num>0){
+                    while($row = mysqli_fetch_assoc($res)){
+                        echo "
+                        <table>
+                        <tr>
+                            <td width='60px'>
+                                <div class='imgBx'><img src='' alt='' srcset=''></div>
+                            </td>
+    
+                            <td>
+                                <h4>{$row["cost"]}<br> <span>{$row["cost"]}</span></h4>
+                            </td>
+                        </tr>
+    
+                        
+    
+                        
+    
+                        
+                    </table>";
+                    }
+                }else{
+                    echo "<p style ='color:red'>There are no recent medicines</p>";
+                }
+            }
+            ?>
+            
 
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="" alt="" srcset=""></div>
-                        </td>
-
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="" alt="" srcset=""></div>
-                        </td>
-
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60px">
-                            <div class="imgBx"><img src="" alt="" srcset=""></div>
-                        </td>
-
-                        <td>
-                            <h4>David <br> <span>Italy</span></h4>
-                        </td>
-                    </tr>
-                </table>
+                
             </div>
 
     

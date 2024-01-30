@@ -9,6 +9,7 @@ include("database/connect.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
+    <link rel="icon" type="image/x-icon" href="nya-logo.jpg">
 </head>
 
 <!-- MATERIAL ICONS FROM GOOGLE --> <!-- MATERIAL ICONS FROM GOOGLE -->
@@ -28,7 +29,7 @@ include("database/connect.php");
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
         <div class="navigation">
-        <img src="nya-logo.jpg" height="100" width="290">
+        
             <ul>
                 <!-- <li>
                     <a href="http://">
@@ -36,6 +37,7 @@ include("database/connect.php");
                         <span class="title">Lab's dashboard</span>
                     </a>
                 </li> -->
+                <img src="nya-logo.jpg" height="100" width="290">
 
                 <li>
                     <a href="l-index.php">

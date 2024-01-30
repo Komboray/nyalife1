@@ -37,7 +37,8 @@ Class Insert{
 
         if($res){
             // echo "The details have been sent!";
-            header("Location:r-index.php");
+            header("Location: ../r-index.php");
+            exit();
         }else{
             echo "You bozo, something is wrong!";
         }

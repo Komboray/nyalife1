@@ -52,10 +52,82 @@ include("database/connect.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triage</title>
+    <link rel="icon" type="image/x-icon" href="nya-logo.jpg">
+    <script src="js/popUp"></script>
     <style>
+
+        /* THis is the audited pop up form */
+        /* Style for the popup form */
+.popup-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Style for the close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+        
+        /* transactions page */
+.form{
+    padding: 30px 40px;
+}
+
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label{
+    display: inline-block;
+    margin-bottom: 5px;
+    color:blue;
+}
+.form-control input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-control input:focus{
+    outline: 0;
+    border-color: #777;
+}
+
+
+.form button{
+    background-color: #8e44ad;
+    border: 2px solid #8e44ad;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    
+    width: 100%;
+}   
+   
         /* this is the css for the pop up form */
         .container form{
-    margin-top: -20px;
+    /* margin-top: -20px; */
     transition: all 0.3s ease;
 }
 
@@ -155,9 +227,6 @@ form .signup-link a:hover{
       width: 700px; 
       display: none;
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       background-color: #1d1d2c;
       padding: 20px;
       border: 1px solid #ccc;
@@ -166,7 +235,7 @@ form .signup-link a:hover{
 
     /* Style for the span element */
     .popup-trigger {
-      cursor: pointer;
+      
       text-decoration: underline;
       color: blue;
     }
@@ -235,8 +304,6 @@ form .signup-link a:hover{
         <br>
         <span onclick="closePopupForm()">Close</span>
     </div>
-
-    <!-- THIS IS THE END OF THE FORM THAT EDITS USER DETAILS -->
 
     <!-- NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION -->
     <div class="container">
@@ -323,8 +390,6 @@ form .signup-link a:hover{
             </div> -->
 
         </div>
-        <!-- CARDS CARDS CARDS CARDS CARDS CARDS -->
-
         
         <div class="cardBox">
             
@@ -356,6 +421,17 @@ form .signup-link a:hover{
 
         </div>
 
+        <!-- //THIS IS THE ADDED PART -->
+
+
+
+
+
+
+
+        <!-- /////ABOVE IS THE ADDED PART -->
+
+        
 
 
         <!-- ORDER DETAILS LIST -->
@@ -375,7 +451,8 @@ form .signup-link a:hover{
                             <td>Stage</td>
                             <td>Visit</td>
                             <td>Status</td>
-                            <a href="http://"><td></td></a>
+                            <td>Add details</td>
+                            <td></td>
                             
                         </tr>
                     </thead>
@@ -401,7 +478,8 @@ form .signup-link a:hover{
                                         <td>{$row["rooms"]}</td>
                                         <td>{$row["visit"]}</td>
                                         <td><span class='status delivered'>In the line</span></td>
-                                        <td><span class='material-symbols-outlined popup-trigger' onclick='openPopupForm()'>edit</span></td>
+                                        <td><a href='database/addTriageDetails.php'><span class='material-symbols-outlined' style='color:red;'>add</span></a></td>
+                                        <td><a href='n-medicine.php'><span class='material-symbols-outlined' style='color:red;'>vaccines</span></a></td>                                        
                                     </tr>
                                     ";
                                 }
@@ -414,9 +492,11 @@ form .signup-link a:hover{
                 
                     </tbody>
                 </table>
+                
 
             </div>
 
+      
             <!-- NEW CUSTOMERS -->
             <div class="recentCustomers">
                 <div class="cardHeader">
@@ -559,6 +639,32 @@ const selectOptionInput = document.getElementById('selectOption');
   // Function to close the popup form for editing user details
   function closePopupForm() {
     var popupForm = document.getElementById('popupFormEdit');
+    popupForm.style.display = 'none';
+  }
+
+  
+  //trial form
+  // Function to open the popup form for editing user details
+ function form() {
+    var popupForm = document.getElementById('popupFormEdit1');
+    popupForm.style.display = 'block';
+  }
+
+  // Function to close the popup form for editing user details
+  function close() {
+    var popupForm = document.getElementById('popupFormEdit1');
+    popupForm.style.display = 'none';
+  }
+  //the new form that i am using to add patient details in triage
+  // Function to open the popup form for editing user details
+ function openPop() {
+    var popupForm = document.getElementById('pop');
+    popupForm.style.display = 'block';
+  }
+
+  // Function to close the popup form for editing user details
+  function closePop() {
+    var popupForm = document.getElementById('pop');
     popupForm.style.display = 'none';
   }
 
